@@ -10,9 +10,11 @@ function [EEG, results] = eeg_htpEegRemoveChansEeglab(EEG,varargin)
 %% Function Specific Inputs:
 %   'type'  - Text for type of data to work with for use in trimming edge effects
 %             default: 'Resting' e.g. {'Resting, Event'}
+%             
+%             Resting removes first and last 10 seconds from file, Event does not perform removal
 %
 %   'minimumduration' - Number to indicate a minimum duration of data required for removal of channels and interpolation
-%                       default: 100
+%                       default: 100 secs
 %
 %   'threshold' - Number to utilize for threshold in automated detection/marking of bad channels via various measures (probability, kurtosis,and spectrum)
 %                 default: 5
@@ -23,7 +25,7 @@ function [EEG, results] = eeg_htpEegRemoveChansEeglab(EEG,varargin)
 %   'automark'      - turns on and off automatic detection 
 %                      default: false
 %
-%   'saveoutput' - Boolean representing if output should be saved
+%   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %
 %% Outputs:
@@ -178,6 +180,14 @@ try
             'eloc_file',EEG.chanlocs,  'butlabel', 'Close Window', 'submean', 'on', ...
             'command', 't = 1', 'position', [400 400 1024 768] ...
             );
+
+        h = findobj('tag', 'eegplottitle');
+        h.FontWeight = 'Bold'; h.FontSize = 16; h.Position = [0.5000 0.93 0];
+
+        handle = gcf;
+        handle.Units = 'normalized';
+        handle.Position = gui.position;
+
         waitfor(gcf);
 
         answer = questdlg(sprintf('Would you like to Re-do the Marking Bad Channel Process for Subject %s?',regexprep(EEG.subject,'^*\.\w+$','')),'Channel Removal Repeat','Repeat','Continue','Continue');

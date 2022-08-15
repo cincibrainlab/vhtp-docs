@@ -1,21 +1,13 @@
-Preprocessing Methods
+Available Steps
 =====================
 
 Here you will find the available methods and their respective parameters and usage for the EEGLAB module of preprocessing.
 
 .. module:: EEGLABMethods
 
-Epoch Creation
---------------
-.. autofunction:: eeg_htpEegCreateEpochsEeglab
-
-Filtering
----------
-.. mat:autofunction:: eeg_htpEegFilterEeglab
-
-Independent Component Analysis
-------------------------------
-.. mat:autofunction:: eeg_htpEegIcaEeglab
+Artifact Subspace Reconstruction
+--------------------------------
+.. mat:autofunction:: eeg_htpEegAsrCleanEeglab
 
 Channel Interpolation
 ---------------------
@@ -25,18 +17,32 @@ Channel Removal
 ---------------
 .. autofunction:: eeg_htpEegRemoveChansEeglab
 
+Epoch Creation
+--------------
+.. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
+
+.. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
+
 Epoch Removal
 -------------
-.. autofunction:: eeg_htpEegRemoveEpochsEeglab
+.. mat:autofunction:: eeg_htpEegRemoveEpochsEeglab
+
+Filtering
+---------
+.. mat:autofunction:: eeg_htpEegFilterEeglab
+
+Independent Component Analysis
+------------------------------
+.. mat:autofunction:: eeg_htpEegIcaEeglab
 
 Segment Removal
 ---------------
-.. autofunction:: eeg_htpEegRemoveSegmentsEeglab
+.. mat:autofunction:: eeg_htpEegRemoveSegmentsEeglab
 
 Rereference
 -----------
-.. autofunction:: eeg_htpEegRereferenceEeglab
+.. mat:autofunction:: eeg_htpEegRereferenceEeglab
 
-Data Resampling
+Resampling
 ---------------
-.. autofunction:: eeg_htpEegResampleDataEeglab
+.. mat:autofunction:: eeg_htpEegResampleDataEeglab
