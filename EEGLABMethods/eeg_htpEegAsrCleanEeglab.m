@@ -13,12 +13,18 @@ function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
 %   'asrmode'   - Integer indicating type of ASR cleaning performed
 %                 Modes:
 %                   1: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection
+%                   
+%                       Mode 1 will negate 'asrburst' and 'asrwindow' parameters
 %
 %                   2: ASR burst reparation, window rejection
+%
+%                       Mode 2 will negate 'asrflatline', 'asrhighpass', 'asrchannel', and 'asrnoisy' parameters
 %
 %                   3: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection, ASR burst reparation, window rejection
 %
 %                   4: ASR burst reparation, window rejection
+%
+%                       Mode 4 will negate 'asrflatline', 'asrhighpass', 'asrchannel', and 'asrnoisy' parameters
 %
 %                   5: Custom
 %                 
@@ -168,7 +174,7 @@ try
             EEG.vhtp.eeg_htpEegAsrCleanEeglab.asrmode = ip.Results.asrmode;
         case 5
             
-            EEG = clean_artifacts(EEG, 'FlatlineCriterion',ip.Results.asrflatline,'Highpass', ip.Results.asrhighpass, 'ChannelCriterion',ip.Results.asrchannel, 'NoiseCriterion',ip.Results.asrnoisy, 'BurstCriterion',ip.Results.asrburst, 'WindowCriterion',ip.Results.asrwindow,'MaxMem',ip.Results.asrmaxmem);
+            EEG = clean_artifacts(EEG, 'FlatlineCriterion',ip.Results.asrflatline,'Highpass', ip.Results.asrhighpass, 'ChannelCriterion',ip.Results.asrchannel, 'LineNoiseCriterion',ip.Results.asrnoisy, 'BurstCriterion',ip.Results.asrburst, 'WindowCriterion',ip.Results.asrwindow,'MaxMem',ip.Results.asrmaxmem);
 
             EEG.vhtp.eeg_htpEegAsrCleanEeglab.asrflatline = ip.Results.asrflatline;
             EEG.vhtp.eeg_htpEegAsrCleanEeglab.asrhighpass = ip.Results.asrhighpass;
