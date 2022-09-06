@@ -1,0 +1,569 @@
+
+  
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Available Steps | VHTP 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" />
+      <link rel="stylesheet" href="../_static/theme.e6081a2fb60dd7bf7015.css" />
+        <link rel="search" title="Search" href="../search.html" />
+        <link rel="index" title="Index" href="../genindex.html" />
+        <link rel="next" title="Defining Parameters" href="DefiningParameters.html" />
+        <link rel="prev" title="Preprocessing" href="index.html" />
+  </head>
+
+  <body class="antialiased text-gray scroll-smooth">
+    <div
+      id="page"
+      data-controller="sidebar search"
+      data-action="keydown@window->search#focus"
+      class="h-screen xl:grid xl:grid-layout"
+    >
+      <a class="block text-xl bg-white py-4 z-20 absolute top-0 h-14 inset-x-0 text-center transform -translate-y-full focus:translate-y-0 focus:outline-none transition-transform duration-75" href="#available-steps" title="Skip navigation links">Skip to content</a>
+
+      <header class="grid-area-header z-10 h-14">
+        <div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2 relative"><div class="flex items-center">
+      <button
+    data-action="sidebar#open"
+    data-sidebar-target="hamburger"
+    class="xl:hidden h-14 w-14 leading-14 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
+  <span class="sr-only">Open navigation menu</span>
+  <svg aria-hidden="true" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</button><a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-sw"
+   href="../index.html"
+   aria-label="Back to homepage"><span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">VHTP 1.0 documentation</span>
+</a></div><div class="flex justify-end items-center flex-1"><form
+  id="searchbox"
+  action="../search.html"
+  data-action="click->search#focusSearchInput"
+  method="get"
+  class="flex print:hidden justify-between items-center leading-14 md:ml-4 bg-gray-dark text-gray-300 focus-within:bg-gray-50 focus-within:text-gray-800 focus-within:absolute focus-within:inset-x-0 focus-within:top-0 md:focus-within:w-full md:focus-within:static">
+
+  <button
+    class="text-inherit h-14 w-14"
+    aria-label="Get search results"
+    tabindex="-1"
+  >
+    <svg aria-hidden="true" class="fill-current stroke-current h-8 w-8" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </button>
+
+  <input
+    name="q"
+    id="search-input"
+    data-search-target="searchInput"
+    type="search"
+    aria-label="Search the docs"
+    placeholder="Search the docs"
+    class="pr-2 bg-transparent text-inherit focus:outline-none w-0 md:w-auto focus:w-full transition-all duration-100"
+  />
+</form></div>
+</div>
+      </header>
+
+      
+  <aside data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed xl:relative inset-y-0 left-0 z-20 xl:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 xl:translate-x-0 xl:opacity-100">
+    <nav
+  role="navigation"
+  class="h-full overflow-y-auto bg-white text-gray-600 pt-8 flex flex-col"
+>
+  <div class="nav-toc flex-1 pl-6"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Preprocessing</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#welcome-to-the-preprocessing-section-for-the-vhtp-pipeline">Welcome to the Preprocessing Section for the VHTP Pipeline.</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Available Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DefiningParameters.html">Defining Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Walkthrough.html">Preprocessing Walkthrough Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+  <button
+      data-action="sidebar#close"
+      title="Close navigation menu"
+      class="text-4xl text-gray-800 p-4 bottom-0 hover:text-brand xl:hidden focus:text-brand self-center">
+    <span class="sr-only">Close navigation menu</span>
+    <svg aria-hidden="true" class="fill-current stroke-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
+</nav>
+  </aside>
+
+  <main
+    data-controller="scroll"
+    class="px-4 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full mx-0 md:mx-auto xl:mr-0"
+  ><nav role="navigation"
+     aria-label="breadcrumbs"
+     class="print:hidden mt-12 text-sm text-gray-light">
+  <a class="text-gray-light text-sm hover:text-gray-dark font-medium focus:text-gray-dark" href="../index.html">VHTP 1.0 documentation</a>
+  <span class="mr-1">/</span><a class="text-gray-light text-sm hover:text-gray-dark" href="index.html">Preprocessing</a>
+    <span class="mr-1">/</span><span aria-current="page">Available Steps</span>
+</nav>
+    <article role="main" class="flex-1">
+      
+  <section id="available-steps">
+<h1>Available Steps<a class="headerlink" href="#available-steps" title="Permalink to this heading"><span>#</span></a></h1>
+<p>Here you will find the available methods and their respective parameters and usage for the EEGLAB module of preprocessing.</p>
+<span class="target" id="module-EEGLABMethods"></span><section id="artifact-subspace-reconstruction">
+<h2>Artifact Subspace Reconstruction<a class="headerlink" href="#artifact-subspace-reconstruction" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegAsrCleanEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegAsrCleanEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegAsrCleanEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegAsrCleanEeglab - Perform ASR cleaning via the clean_rawdata plugin provided through the EEGLAB interface</p>
+<dl>
+<dt>Usage:</dt><dd><p>[ EEG, results ] = eeg_htpEegAsrCleanEeglab( EEG, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl>
+<dt>‘asrmode’   - Integer indicating type of ASR cleaning performed</dt><dd><dl>
+<dt>Modes:</dt><dd><p>1: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection</p>
+<blockquote>
+<div><p>Mode 1 will negate ‘asrburst’ and ‘asrwindow’ parameters</p>
+</div></blockquote>
+<p>2: ASR burst reparation, window rejection</p>
+<blockquote>
+<div><p>Mode 2 will negate ‘asrflatline’, ‘asrhighpass’, ‘asrchannel’, and ‘asrnoisy’ parameters</p>
+</div></blockquote>
+<p>3: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection, ASR burst reparation, window rejection</p>
+<p>4: ASR burst reparation, window rejection</p>
+<blockquote>
+<div><p>Mode 4 will negate ‘asrflatline’, ‘asrhighpass’, ‘asrchannel’, and ‘asrnoisy’ parameters</p>
+</div></blockquote>
+<p>5: Custom</p>
+</dd>
+</dl>
+<p>default: 2</p>
+</dd>
+<dt>‘asrflatline’   - Integer representing the seconds of the max flatline duration. </dt><dd><p>Longer flatline is abnormal.</p>
+<p>default: 5</p>
+</dd>
+<dt>‘asrhighpass’ - Array of numbers indicating the transition band in Hz for the high-pass filter.  </dt><dd><p>default: [0.25 0.75]</p>
+</dd>
+<dt>‘asrchannel’ - Number indicating the minimum channel correlation.</dt><dd><p>Channels correlated to reconstructed channel at a value less than parameter is abnormal.  Needs accurate channel locations.</p>
+<p>default: 0.85</p>
+</dd>
+<dt>‘asrnoisy’ - Integer indicating the number of stdevs, based on channels, used to determine if channel has certain higher line noise to signal ratio to be considered abnormal.</dt><dd><p>default: 4</p>
+</dd>
+<dt>‘asrburst’ - Integer indicating stdev cutoff for burst removal.  </dt><dd><p>Lower the value the more conservative the removal.</p>
+<p>default: 20</p>
+</dd>
+<dt>‘asrwindow’ - Number indicating the max fraction of dirty channels accepted in output for each window. </dt><dd><p>default: 0.25</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]         - Updated EEGLAB structure</p>
+<p>results [struct]     - Updated function-specfic structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>Part of the Cincinnati Visual High Throughput EEG Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="channel-interpolation">
+<h2>Channel Interpolation<a class="headerlink" href="#channel-interpolation" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegInterpolateChansEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegInterpolateChansEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegInterpolateChansEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegInterpolateChansEeglab - Interpolate channels utilizing specified method</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegInterpolateChansEeglab( EEG,varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]          - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl class="simple">
+<dt>‘method’  - Text representing method utilized for interpolation of channels</dt><dd><p>default: ‘spherical’ e.g. {‘invdist’/’v4’, ‘spherical’, ‘spacetime’}</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]        - Updated EEGLAB structure</p>
+<p>results [struct]  - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>This file is part of the Cincinnati Visual High Throughput Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="channel-removal">
+<h2>Channel Removal<a class="headerlink" href="#channel-removal" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegRemoveChansEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegRemoveChansEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegRemoveChansEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegRemoveChansEeglab - Mark channels for rejection and interpolation</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegRemoveChansEeglab( EEG, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl>
+<dt>‘trim’  - boolean to indicate whether to trim beginning and end of file for edge effects</dt><dd><p>default: false</p>
+<p>Removes first and last 10 secs of data</p>
+</dd>
+<dt>‘minimumduration’ - Number to indicate a minimum duration of data required for removal of channels and interpolation</dt><dd><p>default: 100 secs</p>
+</dd>
+<dt>‘threshold’ - Number to utilize for threshold in automated detection/marking of bad channels via various measures (probability, kurtosis,and spectrum)</dt><dd><p>default: 5</p>
+</dd>
+<dt>‘removechannel’ - true/false if channels should be removed after marking prior to next step.</dt><dd><p>default: false</p>
+</dd>
+<dt>‘automark’      - turns on and off automatic detection </dt><dd><p>default: false</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]         - Updated EEGLAB structure</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>This file is part of the Cincinnati Visual High Throughput Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="epoch-creation">
+<h2>Epoch Creation<a class="headerlink" href="#epoch-creation" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegCreateEpochsEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegCreateEpochsEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegCreateEpochsEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegCreateEpochs - Perform epoch creation for Non-ERP datasets</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegCreateEpochsEeglab( EEG, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]          - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl class="simple">
+<dt>‘epochlength’  - Integer representing the recurrence interval in seconds of epochs</dt><dd><p>default: 2</p>
+</dd>
+<dt>‘epochlimits’ - array of two integers representing latencies interval in seconds relative to the time-locking events </dt><dd><p>default: [0 epochlength]</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step while using VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]         - Updated EEGLAB structure</p>
+<p>results [struct]  - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>This file is part of the Cincinnati Visual High Throughput Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegCreateErpEpochsEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegCreateErpEpochsEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegCreateErpEpochsEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegCreateErpEpochsEeglab - Perform epoch creation for ERP datasets</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegCreateErpEpochsEeglab( EEG, epochevent, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+<p>epochevent    - string indicating event to time-lock epochs to when converting continuous dataset to epoched dataset.</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl class="simple">
+<dt>‘epochlimits’ - array of two integers representing interval in secs relative to the time-locking event </dt><dd><p>default: [-.5 2.750]</p>
+</dd>
+<dt>‘rmbaseline’ - Boolean indicating if baseline should be removed</dt><dd><p>default: false</p>
+</dd>
+<dt>‘baselinelimits’ - Array of numbers indicating limits in secs to use for baseline removal process.</dt><dd><p>default: [-.5 0]</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Output:</dt><dd><p>EEG [struct]        - Updated EEGLAB structure</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>Part of the Cincinnati Visual High Throughput EEG Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="epoch-removal">
+<h2>Epoch Removal<a class="headerlink" href="#epoch-removal" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegRemoveEpochsEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegRemoveEpochsEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegRemoveEpochsEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegRemoveEpochsEeglab - Perform manual epoch rejection</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegRemoveEpochsEeglab( EEG, varargin) )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]          - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs</dt><dd><dl class="simple">
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]        - Updated EEGLAB structure</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>This file is part of the Cincinnati Visual High Throughput Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegFilterEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegFilterEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegFilterEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegFilterEeglab - Perform various filtering methods (hipass, lowpass, notch, and cleanline) on data</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegFilterEeglab( EEG, varargin)</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]         - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl class="simple">
+<dt>‘method’  - Text representing method utilized for Filtering</dt><dd><p>default: ‘highpass’ e.g. {‘highpass’, ‘lowpass’, ‘notch’, ‘cleanline’}</p>
+</dd>
+<dt>‘lowpassfilt’ - Number representing the higher edge frequency to use in </dt><dd><p>lowpass bandpass filter 
+default: 80</p>
+</dd>
+<dt>‘highpassfilt’ - Number representing the lower edge frequency to use in </dt><dd><p>highpass bandpass filter 
+default: .5</p>
+</dd>
+<dt>‘notchfilt’ - Array of two numbers utilized for generating the line noise</dt><dd><p>used in harmonics calculation for notch filtering
+default: [55 65]</p>
+</dd>
+<dt>‘revfilt’ - Numeric boolean to invert filter from bandpass to notch</dt><dd><p>default: 0 e.g. {0 -&gt; bandpass, 1 -&gt; notch}</p>
+</dd>
+<dt>‘plotfreqz’ - Numeric boolean to indicate whether to plot filter’s frequency and phase response</dt><dd><p>default: 0</p>
+</dd>
+<dt>‘minphase’ - Boolean for minimum-phase converted causal filter</dt><dd><p>default: false</p>
+</dd>
+<dt>‘filtorder’ - numeric override of default EEG filters</dt><dd><p>default: missing</p>
+</dd>
+<dt>‘dynamicfiltorder’ - numeric boolean indicating whether to use dynamic filtorder determined via EEGLAB filtering function</dt><dd><p>default: 0</p>
+</dd>
+<dt>‘cleanlinebandwidth’ - Number for width of spectral peak  for fixed frequency</dt><dd><p>default: 2</p>
+</dd>
+<dt>‘cleanlinechanlist’ - Array of numbers for indices of channels to clean</dt><dd><p>default: [1:EEG.nbchan]</p>
+</dd>
+<dt>‘cleanlinecomputepower’ - Numeric boolean for visualization of the original and cleaned spectra</dt><dd><p>default: 0</p>
+</dd>
+<dt>‘cleanlinelinefreqs’ - Array of numbers for line frequencies to remove</dt><dd><p>default: [60 120 180]</p>
+</dd>
+<dt>‘cleanlinenormspectrum’ - Numeric boolean to normalize log spectrum via detrending</dt><dd><p>default: 0</p>
+</dd>
+<dt>‘cleanlinep’ - Number for p-value used for detection of sinusoid</dt><dd><p>default: 0.01</p>
+</dd>
+<dt>‘cleanlinepad’ - Number for padding of FFT</dt><dd><p>default: 2</p>
+</dd>
+<dt>‘cleanlineplotfigures’ - Numeric boolean for plotting figures</dt><dd><p>default: 0</p>
+</dd>
+<dt>‘cleanlinescanforlines’ - Numeric boolean for scanning for line noise </dt><dd><p>default: 1</p>
+</dd>
+<dt>‘cleanlinesigtype’ - Text of signal type to clean </dt><dd><p>default: ‘Channels’ e.g. {‘Channels’,’Components’}</p>
+</dd>
+<dt>‘cleanlinetau’ - Number for smoothing factor of overlapping windows</dt><dd><p>default: 100</p>
+</dd>
+<dt>‘cleanlineverb’ - Numeric boolean for verbose output</dt><dd><p>default: 1</p>
+</dd>
+<dt>‘cleanlinewinsize’ - Number to set length of sliding window</dt><dd><p>default: 4</p>
+</dd>
+<dt>‘cleanlinewinstep’ - Number to determine amount of overlap of sliding</dt><dd><p>window
+default: 4</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]         - Updated EEGLAB structure</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>This file is part of the Cincinnati Visual High Throughput Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="independent-component-analysis">
+<h2>Independent Component Analysis<a class="headerlink" href="#independent-component-analysis" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegIcaEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegIcaEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegIcaEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegIcaEeglab - Perform Independent Component Analysis on data</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegIcaEeglab( EEG, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl>
+<dt>‘method’  - Text representing method utilized for ICA</dt><dd><p>default: ‘binica’ e.g. {‘binica’, cudaica’, ‘runica’}</p>
+</dd>
+<dt>‘rank’ - Number representing the data rank of input data</dt><dd><p>default: getrank(double(EEG.data))</p>
+<p>getrank is local function to obtain effective rank of data.</p>
+</dd>
+<dt>‘icadir’ - Directory to store weight-related output files generated during ICA</dt><dd><p>default: fullfile(pwd,’icaweights’)</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>EEG [struct]         - Updated EEGLAB structure</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>This file is part of the Cincinnati Visual High Throughput Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="segment-removal">
+<h2>Segment Removal<a class="headerlink" href="#segment-removal" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegRemoveSegmentsEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegRemoveSegmentsEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegRemoveSegmentsEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegRemoveSegmentsEeglab - Select and reject atifactual regions in data</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegRemoveSegmentsEeglab( EEG, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl class="simple">
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Output:</dt><dd><p>EEG [struct] - output structure with updated dataset</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>Part of the Cincinnati Visual High Throughput EEG Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="rereference">
+<h2>Rereference<a class="headerlink" href="#rereference" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegRereferenceEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegRereferenceEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegRereferenceEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpEegRereferenceEeglab() - Rereference data to Average Reference.</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_htpEegRereferenceEeglab( EEG, varargin )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs:</dt><dd><dl class="simple">
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Output:</dt><dd><p>EEG [struct] - output structure with updated dataset</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>Part of the Cincinnati Visual High Throughput EEG Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="resampling">
+<h2>Resampling<a class="headerlink" href="#resampling" title="Permalink to this heading"><span>#</span></a></h2>
+<dl class="mat function">
+<dt class="sig sig-object mat" id="EEGLABMethods.eeg_htpEegResampleDataEeglab">
+<span class="sig-name descname"><span class="pre">eeg_htpEegResampleDataEeglab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">EEG</span></em>, <em class="sig-param"><span class="pre">varargin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEGLABMethods.eeg_htpEegResampleDataEeglab" title="Permalink to this definition"><span>#</span></a></dt>
+<dd><p>eeg_htpResampleDataEeglab() - Resamples data to newly specified sampling rate</p>
+<dl>
+<dt>Syntax:</dt><dd><p>[ EEG, results ] = eeg_ResampleDataEeglab( EEG, srate )</p>
+</dd>
+<dt>Required Inputs:</dt><dd><p>EEG [struct]           - EEGLAB Structure</p>
+</dd>
+<dt>Function Specific Inputs</dt><dd><dl class="simple">
+<dt>‘srate’         - Number specifying new sampling rate</dt><dd><p>default: 500</p>
+</dd>
+<dt>‘saveoutput’ - Boolean representing if output should be saved when executing step from VHTP preprocessing tool</dt><dd><p>default: false</p>
+</dd>
+</dl>
+</dd>
+<dt>Output:</dt><dd><p>EEG [struct] - output structure with updated dataset</p>
+<p>results [struct]   - Updated function-specific structure containing qi table and input parameters used</p>
+</dd>
+<dt>Disclaimer:</dt><dd><p>Part of the Cincinnati Visual High Throughput EEG Pipeline</p>
+<p>Please see <a class="reference external" href="http://github.com/cincibrainlab">http://github.com/cincibrainlab</a></p>
+</dd>
+<dt>Contact:</dt><dd><p><a class="reference external" href="mailto:kyle&#46;cullion&#37;&#52;&#48;cchmc&#46;org">kyle<span>&#46;</span>cullion<span>&#64;</span>cchmc<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+    </article>
+
+    <footer>
+      
+        <div class="mt-20 mb-4 text-sm text-gray-700">&copy; 2022, Dr. Ernest Pedapati, Kyle Cullion&nbsp;Made with <a href="https://www.sphinx-doc.org">Sphinx 5.0.2</a></div>
+      
+    </footer></main>
+
+
+      <button
+  data-search-target="snackbar"
+  data-action="search#hideSnackbar"
+  class="fixed bottom-0 right-0 z-20 opacity-0 p-4 m-4 tracking-wide bg-gray-900 text-gray-100 transition transform transform-gpu duration-500 translate-y-full"
+>
+  Clear highlights
+</button><div
+  data-sidebar-target="screen"
+  data-action="click->sidebar#close"
+  class="fixed hidden inset-0 bg-black bg-opacity-50">
+</div>
+    </div>
+    
+      
+  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script src="../_static/jquery.js"></script>
+  <script src="../_static/underscore.js"></script>
+  <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+  <script src="../_static/doctools.js"></script>
+<script src="../_static/theme.a9d041328d1560cbc665.js"></script>
+    
+  </body>
+</html>

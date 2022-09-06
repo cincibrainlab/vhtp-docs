@@ -1,0 +1,229 @@
+
+  
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Defining Parameters | VHTP 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" />
+      <link rel="stylesheet" href="../_static/theme.e6081a2fb60dd7bf7015.css" />
+        <link rel="search" title="Search" href="../search.html" />
+        <link rel="index" title="Index" href="../genindex.html" />
+        <link rel="next" title="Preprocessing Walkthrough Introduction" href="Walkthrough.html" />
+        <link rel="prev" title="Available Steps" href="Methods.html" />
+  </head>
+
+  <body class="antialiased text-gray scroll-smooth">
+    <div
+      id="page"
+      data-controller="sidebar search"
+      data-action="keydown@window->search#focus"
+      class="h-screen xl:grid xl:grid-layout"
+    >
+      <a class="block text-xl bg-white py-4 z-20 absolute top-0 h-14 inset-x-0 text-center transform -translate-y-full focus:translate-y-0 focus:outline-none transition-transform duration-75" href="#defining-parameters" title="Skip navigation links">Skip to content</a>
+
+      <header class="grid-area-header z-10 h-14">
+        <div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2 relative"><div class="flex items-center">
+      <button
+    data-action="sidebar#open"
+    data-sidebar-target="hamburger"
+    class="xl:hidden h-14 w-14 leading-14 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
+  <span class="sr-only">Open navigation menu</span>
+  <svg aria-hidden="true" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</button><a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-sw"
+   href="../index.html"
+   aria-label="Back to homepage"><span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">VHTP 1.0 documentation</span>
+</a></div><div class="flex justify-end items-center flex-1"><form
+  id="searchbox"
+  action="../search.html"
+  data-action="click->search#focusSearchInput"
+  method="get"
+  class="flex print:hidden justify-between items-center leading-14 md:ml-4 bg-gray-dark text-gray-300 focus-within:bg-gray-50 focus-within:text-gray-800 focus-within:absolute focus-within:inset-x-0 focus-within:top-0 md:focus-within:w-full md:focus-within:static">
+
+  <button
+    class="text-inherit h-14 w-14"
+    aria-label="Get search results"
+    tabindex="-1"
+  >
+    <svg aria-hidden="true" class="fill-current stroke-current h-8 w-8" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </button>
+
+  <input
+    name="q"
+    id="search-input"
+    data-search-target="searchInput"
+    type="search"
+    aria-label="Search the docs"
+    placeholder="Search the docs"
+    class="pr-2 bg-transparent text-inherit focus:outline-none w-0 md:w-auto focus:w-full transition-all duration-100"
+  />
+</form></div>
+</div>
+      </header>
+
+      
+  <aside data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed xl:relative inset-y-0 left-0 z-20 xl:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 xl:translate-x-0 xl:opacity-100">
+    <nav
+  role="navigation"
+  class="h-full overflow-y-auto bg-white text-gray-600 pt-8 flex flex-col"
+>
+  <div class="nav-toc flex-1 pl-6"><p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Preprocessing</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#welcome-to-the-preprocessing-section-for-the-vhtp-pipeline">Welcome to the Preprocessing Section for the VHTP Pipeline.</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Methods.html">Available Steps</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Defining Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Walkthrough.html">Preprocessing Walkthrough Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+  <button
+      data-action="sidebar#close"
+      title="Close navigation menu"
+      class="text-4xl text-gray-800 p-4 bottom-0 hover:text-brand xl:hidden focus:text-brand self-center">
+    <span class="sr-only">Close navigation menu</span>
+    <svg aria-hidden="true" class="fill-current stroke-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
+</nav>
+  </aside>
+
+  <main
+    data-controller="scroll"
+    class="px-4 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full mx-0 md:mx-auto xl:mr-0"
+  ><nav role="navigation"
+     aria-label="breadcrumbs"
+     class="print:hidden mt-12 text-sm text-gray-light">
+  <a class="text-gray-light text-sm hover:text-gray-dark font-medium focus:text-gray-dark" href="../index.html">VHTP 1.0 documentation</a>
+  <span class="mr-1">/</span><a class="text-gray-light text-sm hover:text-gray-dark" href="index.html">Preprocessing</a>
+    <span class="mr-1">/</span><span aria-current="page">Defining Parameters</span>
+</nav>
+    <article role="main" class="flex-1">
+      
+  <section id="defining-parameters">
+<h1>Defining Parameters<a class="headerlink" href="#defining-parameters" title="Permalink to this heading"><span>#</span></a></h1>
+<p>The key component of the VHTP Preprocessing tool is its flexibility!</p>
+<p>We allow users to customize their own pipeline methods and parameters.</p>
+<p>In the VHTP base directory, there is a subdirectory labeled ‘parameters’.  Within this folder is where you can create a matlab function file that will dictate what steps are taken during preprocessing and each step’s parameters.</p>
+<div class="highlight docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">The following is an example of the setup of a typical parameters file:</span><a class="headerlink" href="#id1" title="Permalink to this code"><span>#</span></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><code><span class="n">function</span> <span class="p">[</span><span class="n">PARAMS</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_InfantTest</span><span class="p">()</span>
+        <span class="n">clear</span> <span class="n">PARAMS</span><span class="p">;</span>
+        <span class="o">%</span><span class="n">FILTER</span> <span class="n">HIGHPASS</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_highpass</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="nd">@eeg_htpEegFilterEeglab</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_highpass</span><span class="o">.</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;highpass&#39;</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_highpass</span><span class="o">.</span><span class="n">hipassfilt</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>
+
+        <span class="o">%%</span><span class="n">FILTER</span> <span class="n">NOTCH</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_notch</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="nd">@eeg_htpEegFilterEeglab</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_notch</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;notch&#39;</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_notch</span><span class="o">.</span><span class="n">notchfilt</span><span class="o">=</span><span class="p">[</span><span class="mi">57</span> <span class="mi">63</span><span class="p">];</span>
+        <span class="o">%</span> <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_notch</span><span class="o">.</span><span class="n">saveoutput</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+
+        <span class="o">%%</span><span class="n">FILTER</span> <span class="n">LOWPASS</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_lowpass</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="nd">@eeg_htpEegFilterEeglab</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_lowpass</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;lowpass&#39;</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_lowpass</span><span class="o">.</span><span class="n">lowpassfilt</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+        <span class="o">%</span><span class="n">PARAMS</span><span class="o">.</span><span class="n">filter_lowpass</span><span class="o">.</span><span class="n">saveoutput</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+
+        <span class="o">%</span> <span class="o">%%</span> <span class="n">WAVELET</span> <span class="n">DENOISING</span>
+         <span class="n">PARAMS</span><span class="o">.</span><span class="n">waveletdenoise</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="nd">@eeg_htpEegWaveletDenoiseHappe</span><span class="p">;</span>
+         <span class="n">PARAMS</span><span class="o">.</span><span class="n">waveletdenoise</span><span class="o">.</span><span class="n">isErp</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+         <span class="n">PARAMS</span><span class="o">.</span><span class="n">waveletdenoise</span><span class="o">.</span><span class="n">filtOn</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+         <span class="n">PARAMS</span><span class="o">.</span><span class="n">waveletdenoise</span><span class="o">.</span><span class="n">saveoutput</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+
+        <span class="o">%%</span><span class="n">CHANNEL</span> <span class="n">REMOVAL</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">function</span><span class="o">=</span><span class="nd">@eeg_htpEegRemoveChansEeglab</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">removechannel</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">saveoutput</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">minimumduration</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;Event&#39;</span><span class="p">;</span>
+        <span class="n">PARAMS</span><span class="o">.</span><span class="n">channel_removal</span><span class="o">.</span><span class="n">automark</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+<span class="n">end</span>
+</code></pre></div></div>
+</div>
+<p>We start with a base structure entitled ‘PARAMS’. We then add levels of fields within the PARAMS structure.</p>
+<p>As you can see each member of the overall PARAMS structure has a similar format. The PARAMS structure will consist of first-level and second-level fields.</p>
+<section id="field-levels-and-their-setup">
+<h2>Field Levels and Their Setup<a class="headerlink" href="#field-levels-and-their-setup" title="Permalink to this heading"><span>#</span></a></h2>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>First-level fields</dt><dd><ul class="simple">
+<li><p>Each first-level field of the overall PARAMS structure (filter_highpass, filter_notch, filter_lowpass, waveletdenoise, and channel_removal in our example above) are named similar to their respective preprocessing method.  These first-level fields also need to be one continuous string whether it is a single word or two words connected via an underscore character.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Second-Level Fields</dt><dd><ul>
+<li><p>The second-level fields will vary for the most part between different processing steps.  Each step will need to have a second-level ‘function’ field as this indicates the function used for that step.  Aside from that the other second-level fields will differ due to them representing that function’s parameters.  As we can see in the example above, the ‘Channel Removal’ and ‘Wavelet Denoising’.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="simple">
+<dt>Function</dt><dd><ul class="simple">
+<li><p>The ‘function’ second-level field indicates the function that will be called for this particular step of processing.</p></li>
+<li><p>Each available method can be found in the Preprocessing <a class="reference internal" href="Methods.html"><span class="doc">Available Steps</span></a> page.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Function Parameters</dt><dd><ul class="simple">
+<li><p>The second-level fields that are not the function itself will be the function’s inputs.  Each of these fields must match the parameter’s name exactly and have a value that matches the type that the function input requires (numeric input has a numeric value and so on).</p></li>
+<li><p>Each of the inputs for every function can be found on the Preprocessing <a class="reference internal" href="Methods.html"><span class="doc">Available Steps</span></a> page.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+</section>
+
+
+    </article>
+
+    <footer>
+      
+        <div class="mt-20 mb-4 text-sm text-gray-700">&copy; 2022, Dr. Ernest Pedapati, Kyle Cullion&nbsp;Made with <a href="https://www.sphinx-doc.org">Sphinx 5.0.2</a></div>
+      
+    </footer></main>
+
+
+      <button
+  data-search-target="snackbar"
+  data-action="search#hideSnackbar"
+  class="fixed bottom-0 right-0 z-20 opacity-0 p-4 m-4 tracking-wide bg-gray-900 text-gray-100 transition transform transform-gpu duration-500 translate-y-full"
+>
+  Clear highlights
+</button><div
+  data-sidebar-target="screen"
+  data-action="click->sidebar#close"
+  class="fixed hidden inset-0 bg-black bg-opacity-50">
+</div>
+    </div>
+    
+      
+  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script src="../_static/jquery.js"></script>
+  <script src="../_static/underscore.js"></script>
+  <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+  <script src="../_static/doctools.js"></script>
+<script src="../_static/theme.a9d041328d1560cbc665.js"></script>
+    
+  </body>
+</html>
