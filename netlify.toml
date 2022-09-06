@@ -1,3 +1,8 @@
+cat <<EOF > netlify.toml
 [build]
-    publish = "_build/html"
-    command = "make html"
+	publish = "build/html"
+	command = "make html"
+EOF
+
+
+netlify init
