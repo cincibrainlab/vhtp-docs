@@ -58,4 +58,4 @@ html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
 
 
-matlab_src_dir = 'C:/Users/eplab/Documents/pythonScripts/test_site'
+matlab_src_dir = os.path.abspath('..')
