@@ -114,7 +114,7 @@ The parameters files will be stored in the vhtp/parameters directory.    More in
 	* Once we have filled in our parameters file with all the steps’ functions and inputs, we are ready to move to the GUI!
 	* The top right of our GUI has some settings we need to take a look at before we start processing.
 	
-		.. figure:: ./PreprocessImages/InitialOptions.png
+		.. figure:: ./PreprocessImages/InitialOptions.PNG
 		   :scale: 100
 		   
 		   The most important section is the requirements section.  You will see a label that says 'EEGLAB' next to a light.  The red light indicates that we need to add EEGLAB to our MATLAB path.  To do this we click the 'Fix Path' button and a file explorer window appears.  We select our EEGLAB directory and we are good to go!  The light should now be green.
