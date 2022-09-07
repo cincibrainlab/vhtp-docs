@@ -142,7 +142,7 @@ Selecting and Preparing Data
 	
 	* Let us take a look at how we set this core directory in the GUI
 	
-		.. figure:: ConfigureDatasets.png
+		.. figure:: /PreprocessImages/ConfigureDatasets.png
 		   :align: center
 		   :scale: 90
 		   
