@@ -142,7 +142,7 @@ Selecting and Preparing Data
 	
 	* Let us take a look at how we set this core directory in the GUI
 	
-		.. figure:: /PreprocessImages/ConfigureDatasets.png
+		.. figure:: ./PreprocessImages/ConfigureDatasets.PNG
 		   :align: center
 		   :scale: 90
 		   
@@ -170,7 +170,7 @@ Paradigm and Workflow Style Selection
 #. Selecting Paradigm
 	* Once we select an input folder/file and an export folder, we will be able to select a paradigm to load the parameters for
 
-	.. figure:: PreprocessImages/SelectParadigms.png
+	.. figure:: ./PreprocessImages/SelectParadigms.PNG
 		:scale: 90
 		:align: center
 		  
@@ -181,7 +181,7 @@ Paradigm and Workflow Style Selection
 #. Select Workflow Style
 	* The “Workflow Style” choices allows flexibility to how you use the steps. You will likely begin by using “All Steps (in Order).” Please see below for a breakdown of each type of preprocessing option.
 
-		.. figure:: PreprocessImages/SelectWorkflow.png
+		.. figure:: ./PreprocessImages/SelectWorkflow.PNG
 		  :scale: 90
 		  :align: center
 	
@@ -193,7 +193,7 @@ Paradigm and Workflow Style Selection
 	* Selected Step
 		- The 'Selected Step' option will perform the step you select from the list of available steps.  The steps listed are generated from those you specify in your parameters file. As you can see, all of our steps from our parameters file we set up back in the :ref:`initialization` section are present!
 		
-			.. figure:: PreprocessImages/SelectStep.png
+			.. figure:: ./PreprocessImages/SelectStep.PNG
 				:scale: 90
 				
 				Click ‘Edit Parameters’ to make changes to the parameters file, such as adding/removing a step and/or changing parameter values.
@@ -202,7 +202,7 @@ Paradigm and Workflow Style Selection
 		
 		- The step details panel will show the parameters and function used for the selected step in the selected step list.
 			
-			.. figure:: PreprocessImages/StepDetails.png
+			.. figure:: ./PreprocessImages/StepDetails.PNG
 				:scale: 90
 				:align: center
 				
@@ -211,7 +211,7 @@ Paradigm and Workflow Style Selection
 	* Continue from Step
 		- The 'Continue From Step' option will perform the selected step and all subsuquent steps listed in your parameters file.  Therefore, if you selected the fourth step, steps 4 through the last step will be performed.
 		
-			.. figure:: PreprocessImages/SelectContinuation.png
+			.. figure:: ./PreprocessImages/SelectContinuation.PNG
 				:scale: 90
 				:align: center
 				
@@ -223,7 +223,7 @@ Processing Execution
 #. Execute Workflow
 	* After you have selected the data, the paradigm, and the workflow style, you can commence with preprocessing by clicking the 'Execute' button.
 
-		.. figure:: PreprocessImages/Execute.png
+		.. figure:: ./PreprocessImages/Execute.PNG
 		  :scale: 90
 		  :align: center
 		  
@@ -231,7 +231,7 @@ Processing Execution
 
 	* Here is a look at our GUI after completing the setup
 	
-		.. figure:: PreprocessImages/FinalProduct.png
+		.. figure:: ./PreprocessImages/FinalProduct.PNG
 		   :scale: 90
 		   :align: center
 		   
@@ -245,19 +245,19 @@ Exporting Data
 	
 	* Within this, each paradigm we use will have its own subfolder. Right now, we just see our 'Resting' folder.
 	
-		.. figure:: PreprocessImages/ParadigmOutput.png
+		.. figure:: ./PreprocessImages/ParadigmOutput.PNG
 		   :scale: 90
 		   :align: center
 		   
 	* Within a paradigm subfolder, we will find our actual output.  Each subfolder, as seen below, is named after the step's function.  Within are the .set files for that step, if the parameter saveoutput was set to ‘true.’ .
 	
-		.. figure:: PreprocessImages/StepOutput.png
+		.. figure:: ./PreprocessImages/StepOutput.PNG
 		   :scale: 90
 		   :align: center
 	
 	* The folder that we selected for the output directory (see :ref:`Selecting and Preparing Data`) will be where our exported files will end up.  All the files and output for our paradigm will be exported into a .zip file with the date appended to the file name.
 
-		.. figure:: PreprocessImages/Export.png
+		.. figure:: ./PreprocessImages/Export.PNG
 		   :scale: 90
 		   :align: center
 		   
@@ -271,7 +271,7 @@ Examining Step Output
 #. Inspecting file outputs
 	* We can see in the :ref:`Exporting Data` section that each function used will have its own subdirectory that houses the data.  If we go into each function subdirectory, we can see our output files with their custom labels.
 		
-		.. figure:: PreprocessImages/FunctionOutputFiles.png
+		.. figure:: ./PreprocessImages/FunctionOutputFiles.PNG
 		   :scale: 90
 		   :align: center
 		   
@@ -283,7 +283,7 @@ Examining Step Output
    
 	* This information is stored in EEG.vhtp. You can view these details by using MATLAB’s variable view or by typing EEG.vhtp in the console, as shown below.
 	
-		.. figure:: PreprocessImages/vhtpStructOutput.png
+		.. figure:: ./PreprocessImages/vhtpStructOutput.PNG
 		   :scale: 90
 		   :align: center
 		   
@@ -301,7 +301,7 @@ Examining Step Output
 		   
 	* The stepPreprocessing structure has the following format:
 	
-		.. figure:: PreprocessImages/stepPreprocessingStructOutput.png
+		.. figure:: ./PreprocessImages/stepPreprocessingStructOutput.PNG
 		   :scale: 90
 		   :align: center
 		   
@@ -309,7 +309,7 @@ Examining Step Output
 		   
    * The eeg_htpEegFilterEeglab struct has the following format:
    
-		.. figure:: PreprocessImages/functionStructOutput.png
+		.. figure:: ./PreprocessImages/functionStructOutput.PNG
 		   :scale: 90
 		   :align: center
 		   
