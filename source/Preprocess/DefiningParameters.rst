@@ -52,7 +52,7 @@ The following section breaks down the components of one of these fields and the 
 
 Setup
 """"""""""""""""""""""""""""	
-.. figure:: PreprocessImages/ParameterBreakdown.PNG
+.. figure:: ./PreprocessImages/ParameterBreakdown.PNG
 		 :scale: 50
 		 
 #. This line is optional to include in your function, but makes it a lot easier to follow what is going on. In this example, we have listed "FILTER HIGHPASS" to remind us that this step applies a highpass filter to our data.
