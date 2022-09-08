@@ -5,10 +5,10 @@ The key component of the VHTP Preprocessing tool is its flexibility!
 
 We allow users to customize their own pipeline methods and parameters.
 
-In the VHTP base directory, there is a subdirectory labeled 'parameters'.  Within this folder is where you can create a matlab function file that will dictate what steps are taken during preprocessing and each step's parameters.
+In the VHTP base directory, there is a subdirectory labeled 'parameters'.  Within this folder, you must create a MATLAB function file that will dictate what steps are taken during preprocessing and specifies the parameters used to perform these operations.
 
 .. code-block::
-	:caption: The following is an example of the setup of a typical parameters file:
+	:caption: This is an example of the setup of a typical parameters file:
 	
 	function [PARAMS] = parameters_InfantTest()
 		clear PARAMS;
@@ -46,24 +46,25 @@ In the VHTP base directory, there is a subdirectory labeled 'parameters'.  Withi
 	end
 
 
-We start with a base structure entitled 'PARAMS'. We then add levels of fields within the PARAMS structure. 
+We start with a base structure entitled 'PARAMS'. We then add fields within the PARAMS structure for each preprocessing step.
 
-As you can see each member of the overall PARAMS structure has a similar format. The PARAMS structure will consist of first-level and second-level fields.
+The following section breaks down the components of one of these fields and the requirements for each preprocessing step.
 
-Field Levels and Their Setup
-""""""""""""""""""""""""""""
-#. First-level fields
-	* Each first-level field of the overall PARAMS structure (filter_highpass, filter_notch, filter_lowpass, waveletdenoise, and channel_removal in our example above) are named similar to their respective preprocessing method.  These first-level fields also need to be one continuous string whether it is a single word or two words connected via an underscore character. 
-
-#. Second-Level Fields
-	* The second-level fields will vary for the most part between different processing steps.  Each step will need to have a second-level 'function' field as this indicates the function used for that step.  Aside from that the other second-level fields will differ due to them representing that function's parameters.  As we can see in the example above, the 'Channel Removal' and 'Wavelet Denoising'.
-
-		#. Function
-			* The 'function' second-level field indicates the function that will be called for this particular step of processing.  
-
-			* Each available method can be found in the Preprocessing :doc:`Methods` page.
-
-		#. Function Parameters
-			* The second-level fields that are not the function itself will be the function's inputs.  Each of these fields must match the parameter's name exactly and have a value that matches the type that the function input requires (numeric input has a numeric value and so on). 
-
-			* Each of the inputs for every function can be found on the Preprocessing :doc:`Methods` page.
+Setup
+""""""""""""""""""""""""""""	
+.. figure:: PreprocessImages/ParameterBreakdown.PNG
+		 :scale: 50
+		 
+#. This line is optional to include in your function, but makes it a lot easier to follow what is going on. In this example, we have listed "FILTER HIGHPASS" to remind us that this step applies a highpass filter to our data.
+	
+#. "PARAMS" is required at the start of every line for each preprocessing step in your parameters file.
+	
+#. This is a user-defined name that can be set to whatever you like, as long as it is a continuous string (no spaces). You could use this to remind us what is happening in this step, as we have here with "filter_highpass," or you could name it something meaningful to you, like "step one" or "step1."
+	a. If you decide to save output from this function, the SET file names will include your user defined name (ex: originalfilename_filter_highpass.set).
+	b. This part of the function must have a period at the end, as shown.
+#. The start of each step should include "function," which tells the script to run the function found in 5.
+#. This is where you will tell MATLAB which function to run. A full list of function names can be found in :doc:`Methods`
+	a. The function you must have an '@' before the name.
+#. These are where you place input parameter names, with one per each line. In the second line, we are adding a parameter to tell it which method to use; in the third line, we are telling it what frequencies to use for the highpass filter.
+#. These are the values we would like to apply to the optional parameters.
+	
