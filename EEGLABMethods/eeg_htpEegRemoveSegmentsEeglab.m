@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegRemoveSegmentsEeglab(EEG,varargin)
-% eeg_htpEegRemoveSegmentsEeglab - Select and reject atifactual regions in data
+% Description: Select and reject atifactual regions in data
+% ShortTitle: Visual continuous artifact removal
+% Category: Preprocessing
+% Tags: Artifact
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegRemoveSegmentsEeglab( EEG, varargin )
@@ -10,10 +13,16 @@ function [EEG, results] = eeg_htpEegRemoveSegmentsEeglab(EEG,varargin)
 %% Function Specific Inputs:
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
-%% Output:
+%
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
+%
+%% Outputs:
 %   EEG [struct] - output structure with updated dataset
 %
 %   results [struct]   - Updated function-specific structure containing qi table and input parameters used
+%
 %% Disclaimer:
 %   Part of the Cincinnati Visual High Throughput EEG Pipeline
 %   
@@ -22,11 +31,14 @@ function [EEG, results] = eeg_htpEegRemoveSegmentsEeglab(EEG,varargin)
 %% Contact:
 %   kyle.cullion@cchmc.org
 defaultSaveOutput = false;
+defaultOutputDir = '';
 
 ip = inputParser();
 ip.StructExpand = 0;
 addRequired(ip, 'EEG', @isstruct);
-addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical)
+addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
+
 
 parse(ip,EEG,varargin{:});
 
@@ -114,6 +126,10 @@ try
         end
         EEG.vhtp.eeg_htpEegRemoveSegmentsEeglab.completed=1;
 
+        if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+            EEG.vhtp.inforow.proc_remove_regions = EEG.vhtp.eeg_htpEegRemoveSegmentsEeglab.proc_removed_regions;
+        end
+
     catch
 
         EEG.vhtp.eeg_htpEegRemoveSegmentsEeglab.completed=0;
@@ -125,7 +141,14 @@ try
 catch e
     throw(e)
 end
+close(findobj('Type','figure'));
 EEG=eeg_checkset(EEG);
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    EEG.vhtp.inforow.proc_xmin_remove_regions = EEG.xmin;
+    EEG.vhtp.inforow.proc_xmax_remove_regions = EEG.xmax;
+end
+
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegRemoveSegmentsEeglab,'qi_table')
@@ -134,5 +157,15 @@ else
     EEG.vhtp.eeg_htpEegRemoveSegmentsEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegRemoveSegmentsEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'segment_removal');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
+
 end
 

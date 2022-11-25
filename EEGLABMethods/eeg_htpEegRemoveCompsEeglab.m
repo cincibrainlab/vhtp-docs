@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegRemoveCompsEeglab(EEG,varargin)
-% eeg_htpEegRemoveCompsEeglab - Select and reject/keep components from data
+% Description: Select and reject/keep components from data
+% ShortTitle: Visual component removal
+% Category: Preprocessing
+% Tags: Artifact
 %
 % Usage:
 %    >> [ EEG, results ] = eeg_htpEegRemoveCompsEeglab( EEG, varargin )
@@ -22,22 +25,36 @@ function [EEG, results] = eeg_htpEegRemoveCompsEeglab(EEG,varargin)
 %    'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                   default: false
 %
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
 %
-% Outputs:
+%   'freqrange' - Array of two numbers utilized for the frequency range for 
+%                 extended detail about specific components when plotting 
+%                 activity
+%                 default: [2 80]
+%
+%% Outputs:
 %     EEG         - Updated EEGLAB structure
 %
 %     results   - Updated function-specific structure containing qi table
 %                 and input parameters used
 %
-%  This file is part of the Cincinnati Visual High Throughput Pipeline,
-%  please see http://github.com/cincibrainlab
+%% Disclaimer:
+% This file is part of the Cincinnati Visual High Throughput Pipeline,
+%  
+% Please see http://github.com/cincibrainlab
 %
+%% Contact:
 %  Contact: kyle.cullion@cchmc.org
 
 defaultMaxComps = 24;
 defaultDPreset = 'dynamic';
 defaultRemoveIcs = [];
+defaultUseDefaultVisuals = 1;
 defaultSaveOutput = false;
+defaultOutputDir = '';
+defaultFreqRange = [2 80];
 
 ip = inputParser();
 ip.StructExpand = 0;
@@ -45,7 +62,10 @@ addRequired(ip, 'EEG', @isstruct);
 addParameter(ip,'maxcomps',defaultMaxComps,@isnumeric);
 addParameter(ip,'dpreset',defaultDPreset, @ischar);
 addParameter(ip,'removeics',defaultRemoveIcs, @isvector);
+addParameter(ip, 'usedefaultvisuals',defaultUseDefaultVisuals, @islogical);
 addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
+addParameter(ip,'freqrange',defaultFreqRange,@isnumeric);
 
 parse(ip,EEG,varargin{:});
 
@@ -69,10 +89,9 @@ try
     
     % Open component topoplot, 20 components
     pop_selectcomps(EEG, 1:maxcomps);
-
-    h.tp = gcf;
-    h.tp.Units = 'norm';
-    h.tp.Position = [sc_width/200/sc_width .5 main_width main_height];
+    h.tp = findobj('-regexp','tag','selcomp');
+    [h.tp.Units] = deal('norm');
+    [h.tp.Position] = deal([sc_width/200/sc_width .5 main_width main_height]);
     
     switch ip.Results.dpreset
         case '1080p'
@@ -170,7 +189,7 @@ try
 
     for ri = 1 : maxcomps
 
-        chbutton = findobj('tag', ['comp' num2str(ri)], 'Parent', h.tp);
+        chbutton = findobj('tag', ['comp' num2str(ri)]);
 
         chbutton.UserData = {EEG, ri};
         chbutton.Callback = @prop_extended;
@@ -275,8 +294,13 @@ try
     allui = {p, h.tp, h.ep, ts.ep};
 
     for mi = 1 : length(allui)
-        allui{mi}.Position(2) = allui{mi}.Position(2) * 1.20;
-        allui{mi}.Tag = 'selectcomps';
+        if length(allui{mi}) > 1
+            arrayfun(@(x) set(x,'Position',x.Position.*[1 1.20 1 1]),allui{mi},'uniformOutput',false);
+            arrayfun(@(x) set(x,'Tag','selectcomps'),allui{mi},'uniformOutput',false);
+        else
+            allui{mi}.Position(2) = allui{mi}.Position(2) * 1.20;
+            allui{mi}.Tag = 'selectcomps';
+        end
     end
 
     position_factor = [];
@@ -303,7 +327,7 @@ function prop_extended( src, event)
 
     EEG = src.UserData{1};
     ri = src.UserData{2};
-    pop_prop_extended( EEG, 0, ri,  NaN, {'freqrange', [0 55]});
+    pop_prop_extended( EEG, 0, ri,  NaN, {'freqrange', ip.Results.freqrange});
 
  end
 
@@ -372,7 +396,7 @@ function b2_callback(src, event)
     EEG = src.UserData;
 
 
-    pop_prop_extended( EEG, 0, str2num(comps.String), NaN, {'freqrange', [0 55]});
+    pop_prop_extended( EEG, 0, str2num(comps.String), NaN, {'freqrange', ip.Results.freqrange});
 
 
 
@@ -424,33 +448,43 @@ function b1_callback(src, event)
     EEGTMP = EEG;
 
     % remove components
-    EEG=compRemove(EEG, str2num(comps.String));
+    EEG=compRemove(EEG, ip.Results.usedefaultvisuals, str2num(comps.String));
 
     % replot components
-    vis_artifacts( EEG, EEGTMP);
-    vis_h = gcf;
-    vis_h.Units = 'norm';
-    vis_h.Position(1) = 0.05;
-    vis_h.Position(2) = 0.5;
-
-    vis_h.Units = 'pixels';
-    vis_h.Position(3) = 1000;
-    vis_h.Position(4) = 500;
-
-    uiwait(vis_h);
+    if ~ip.Results.usedefaultvisuals
+        vis_artifacts( EEG, EEGTMP);
+        vis_h = gcf;
+        vis_h.Units = 'norm';
+        vis_h.Position(1) = 0.05;
+        vis_h.Position(2) = 0.5;
+    
+        vis_h.Units = 'pixels';
+        vis_h.Position(3) = 1000;
+        vis_h.Position(4) = 500;
+    
+        uiwait(vis_h);
+    
+    end
     EEGTMP = [];
     
-
     h = findobj('Tag', 'selectcomps');
 
     for mi = 1 : length( h )
         close( h(mi) );
     end
 
+    eeglabFigs = findobj('Tag','EEGPLOT');
+    for fig = 1:length(eeglabFigs)
+        close(eeglabFigs(fig));
+    end
 
 end
 
 EEG = eeg_checkset(EEG);
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    EEG.vhtp.inforow.proc_remove_comps_removeComps = EEG.vhtp.eeg_htpEegRemoveCompsEeglab.proc_removeComps;
+end
 
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
@@ -460,6 +494,15 @@ else
     EEG.vhtp.eeg_htpEegRemoveCompsEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegRemoveCompsEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'component_removal');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
 end
 
 function EEG = remove_comps_action( EEG, components_to_remove_vector )
@@ -487,7 +530,7 @@ function comps_artifact = get_icview_comps(var, threshold, range,EEG)
     comps_artifact = getComps(var, threshold);
 end
 
-function EEG = compRemove(EEG,varargin)
+function EEG = compRemove(EEG, visuals, varargin)
             
 
     try
@@ -508,8 +551,11 @@ function EEG = compRemove(EEG,varargin)
         end
       
         try
-            
-            EEG=pop_subcomp(EEG,compIdx, 0);
+            if visuals
+                EEG = pop_subcomp(EEG,compIdx,visuals);
+            else
+                EEG=pop_subcomp(EEG,compIdx, 0);
+            end
         catch
             
         end

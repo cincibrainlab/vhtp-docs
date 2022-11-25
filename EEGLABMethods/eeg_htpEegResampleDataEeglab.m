@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegResampleDataEeglab(EEG,varargin)
-% eeg_htpResampleDataEeglab() - Resamples data to newly specified sampling rate
+% Description: Resamples data to newly specified sampling rate
+% ShortTitle: Resample EEG data
+% Category: Preprocessing
+% Tags: Resample
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_ResampleDataEeglab( EEG, srate )
@@ -13,7 +16,12 @@ function [EEG, results] = eeg_htpEegResampleDataEeglab(EEG,varargin)
 %
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
-%% Output:
+%
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: ''
+%
+%% Outputs:
 %   EEG [struct] - output structure with updated dataset
 %
 %   results [struct]   - Updated function-specific structure containing qi table and input parameters used
@@ -29,12 +37,15 @@ function [EEG, results] = eeg_htpEegResampleDataEeglab(EEG,varargin)
 % MATLAB built-in input validation
 defaultSrate=500;
 defaultSaveOutput = false;
+defaultOutputDir = '';
 
 ip = inputParser();
 ip.StructExpand = 0;
 addRequired(ip, 'EEG', @isstruct);
 addParameter(ip, 'srate',defaultSrate,@isnumeric);
 addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
+
 
 parse(ip,EEG,varargin{:});
 
@@ -53,11 +64,17 @@ try
     EEG.vhtp.eeg_htpEegResampleDataEeglab.completed=1;
     EEG.vhtp.eeg_htpEegResampleDataEeglab.rawsrate = orig_srate;
     EEG.vhtp.eeg_htpEegResampleDataEeglab.srate = ip.Results.srate;
+    
 catch e
     throw(e)
 end
 
 EEG = eeg_checkset( EEG );
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    EEG.vhtp.inforow.proc_resample_srate = ip.Results.srate;
+end
+
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegResampleDataEeglab,'qi_table')
@@ -66,6 +83,15 @@ else
     EEG.vhtp.eeg_htpEegResampleDataEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegResampleDataEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'resample');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
 
 end
 

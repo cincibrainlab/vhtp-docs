@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegRemoveEpochsEeglab(EEG,varargin)
-%% eeg_htpEegRemoveEpochsEeglab - Perform manual epoch rejection
+%% Description: Perform manual epoch rejection
+% ShortTitle: Visual epoch removal
+% Category: Preprocessing
+% Tags: Epoch
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegRemoveEpochsEeglab( EEG, varargin) )
@@ -10,6 +13,10 @@ function [EEG, results] = eeg_htpEegRemoveEpochsEeglab(EEG,varargin)
 %% Function Specific Inputs
 %    'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                   default: false
+%
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
 %
 %% Outputs:
 %     EEG [struct]        - Updated EEGLAB structure
@@ -30,6 +37,7 @@ defaultThreshold = 50;
 defaultEvents = {};
 defaultLimits = [EEG.xmin EEG.xmax];
 defaultSaveOutput = false;
+defaultOutputDir = '';
 
 ip = inputParser();
 ip.StructExpand = 0;
@@ -38,7 +46,8 @@ addParameter(ip, 'limits',defaultLimits,@isnumeric);
 addParameter(ip,'thresholdrejection',defaultThresholdRejection,@islogical);
 addParameter(ip, 'threshold',defaultThreshold,@isnumeric);
 addParameter(ip,'events', defaultEvents,@iscell);
-addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical)
+addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
 
 parse(ip,EEG,varargin{:});
 
@@ -124,6 +133,17 @@ try
 catch e
     throw(e)
 end
+
+close(findobj('Type','figure'));
+EEG = eeg_checkset(EEG);
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    EEG.vhtp.inforow.proc_remove_epochs_badtrials = EEG.vhtp.eeg_htpEegRemoveEpochsEeglab.epoch_badtrials;
+    EEG.vhtp.inforow.proc_remove_epochs_badid = EEG.vhtp.eeg_htpEegRemoveEpochsEeglab.epoch_badid;
+    EEG.vhtp.inforow.proc_remove_epochs_percent = EEG.vhtp.eeg_htpEegRemoveEpochsEeglab.epoch_percent;
+    EEG.vhtp.inforow.proc_xmax_remove_epochs = EEG.trials * abs(EEG.xmax-EEG.xmin);
+end
+
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
 'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegRemoveEpochsEeglab,'qi_table')
@@ -132,4 +152,14 @@ else
     EEG.vhtp.eeg_htpEegRemoveEpochsEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegRemoveEpochsEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'epoch_removal');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
+
 end

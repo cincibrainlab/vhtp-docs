@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegCreateEpochsEeglab(EEG,varargin)
-% eeg_htpEegCreateEpochs - Perform epoch creation for Non-ERP datasets
+% Description: Perform epoch creation for Non-ERP datasets
+% ShortTitle: Create Regular Epochs (EEGLAB)
+% Category: Preprocessing
+% Tags: Epoching
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegCreateEpochsEeglab( EEG, varargin )
@@ -16,7 +19,11 @@ function [EEG, results] = eeg_htpEegCreateEpochsEeglab(EEG,varargin)
 %
 %   'saveoutput' - Boolean representing if output should be saved when executing step while using VHTP preprocessing tool
 %                  default: false
-%           
+%   
+%  'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: ''      
+%
 %% Outputs:
 %     EEG [struct]         - Updated EEGLAB structure
 %
@@ -33,14 +40,16 @@ function [EEG, results] = eeg_htpEegCreateEpochsEeglab(EEG,varargin)
 defaultEpochLength = 2;
 defaultEpochLimits = [0 defaultEpochLength];
 defaultSaveOutput = false;
+defaultOutputDir = '';
 
 % MATLAB built-in input validation
 ip = inputParser();
 ip.StructExpand = 0;
 addRequired(ip, 'EEG', @isstruct);
 addParameter(ip, 'epochlength',defaultEpochLength,@isnumeric);
-addParameter(ip,'epochlimits',defaultEpochLimits,@isnumeric);
+addParameter(ip, 'epochlimits',defaultEpochLimits,@isnumeric);
 addParameter(ip, 'saveoutput',defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
 
 parse(ip,EEG,varargin{:});
 
@@ -63,6 +72,14 @@ catch e
 end
 
 EEG = eeg_checkset(EEG);
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    EEG.vhtp.inforow.proc_xmax_create_epochs = EEG.vhtp.eeg_htpEegCreateEpochsEeglab.proc_xmax_epoch;
+    EEG.vhtp.inforow.proc_create_epochs_length = ip.Results.epochlength;
+    EEG.vhtp.inforow.proc_create_epochs_limits = ip.Results.epochlimits;
+    EEG.vhtp.inforow.proc_create_epochs_trials = EEG.trials;
+end
+
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegCreateEpochsEeglab,'qi_table')
@@ -71,5 +88,15 @@ else
     EEG.vhtp.eeg_htpEegCreateEpochsEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegCreateEpochsEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'epoch_creation');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
 end
 
+
+end

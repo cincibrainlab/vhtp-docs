@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegFilterEeglab(EEG,varargin)
-% eeg_htpEegFilterEeglab - Perform various filtering methods (hipass, lowpass, notch, and cleanline) on data
+% Description: Perform various filtering methods (highpass, lowpass, notch, and cleanline) on data
+% ShortTitle: Filter EEG using EEGLAB
+% Category: Preprocessing
+% Tags: Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegFilterEeglab( EEG, varargin)
@@ -87,6 +90,10 @@ function [EEG, results] = eeg_htpEegFilterEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
+%
 %% Outputs:
 %     EEG [struct]         - Updated EEGLAB structure
 %
@@ -124,6 +131,7 @@ defaultCleanlineVerb = 1;
 defaultCleanlineWinSize = 4;
 defaultCleanlineWinStep = 4;
 defaultSaveOutput = false;
+defaultOutputDir = '';
     
 validateMethod = @( method ) ischar( method ) & ismember(method, {'lowpass', 'highpass', 'notch', 'cleanline'});
 validateRevFilt = @(revfilt) isnumeric(revfilt) && ((revfilt==1 &&  strcmp(varargin(find(strcmp(varargin,'method'))+1),'notch')) || (revfilt==0 && ~strcmp(varargin(find(strcmp(varargin,'method'))+1),'notch')));
@@ -154,7 +162,8 @@ addParameter(ip, 'cleanlinetau',defaultCleanlineTau,@isnumeric);
 addParameter(ip, 'cleanlineverb',defaultCleanlineVerb,@isnumeric);
 addParameter(ip, 'cleanlinewinsize',defaultCleanlineWinSize,@isnumeric);
 addParameter(ip, 'cleanlinewinstep',defaultCleanlineWinStep,@isnumeric);
-addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical)
+addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
 
 parse(ip,EEG,varargin{:});
 
@@ -170,10 +179,10 @@ try
                 else
                     highpassfiltorder = ip.Results.filtorder;
                 end
-                EEG = pop_eegfiltnew(EEG,  'locutoff',ip.Results.highpassfilt, 'hicutoff', [],'filtorder',highpassfiltorder);
+                EEG = pop_eegfiltnew(EEG,  'locutoff',ip.Results.highpassfilt, 'hicutoff', [],'filtorder',highpassfiltorder,'revfilt',ip.Results.revfilt,'plotfreqz',ip.Results.plotfreqz,'minphase',ip.Results.minphase);
                 EEG.vhtp.eeg_htpEegFilterEeglab.highpassfiltorder    = highpassfiltorder;
             else
-                EEG = pop_eegfiltnew(EEG,  'locutoff',ip.Results.hipassfilt, 'hicutoff', []);
+                EEG = pop_eegfiltnew(EEG,  'locutoff',ip.Results.highpassfilt, 'hicutoff', [],'revfilt',ip.Results.revfilt,'plotfreqz',ip.Results.plotfreqz,'minphase',ip.Results.minphase);
                 EEG.vhtp.eeg_htpEegFilterEeglab.highpassfiltorder    = 'dynamic';
             end
             EEG.vhtp.eeg_htpEegFilterEeglab.highpass_completed = 1;
@@ -190,11 +199,11 @@ try
                     lowpassfiltorder = ip.Results.filtorder;
                 end
                 EEG = pop_eegfiltnew(EEG,  ...
-                    'locutoff', [],  'hicutoff', ip.Results.lowpassfilt,'filtorder',lowpassfiltorder);
+                    'locutoff', [],  'hicutoff', ip.Results.lowpassfilt,'filtorder',lowpassfiltorder,'revfilt',ip.Results.revfilt,'plotfreqz',ip.Results.plotfreqz,'minphase',ip.Results.minphase);
                 EEG.vhtp.eeg_htpEegFilterEeglab.lowpassfiltorder    = lowpassfiltorder;
             else
                 EEG = pop_eegfiltnew(EEG,  ...
-                    'locutoff', [],  'hicutoff', ip.Results.lowpassfilt);
+                    'locutoff', [],  'hicutoff', ip.Results.lowpassfilt,'revfilt',ip.Results.revfilt,'plotfreqz',ip.Results.plotfreqz,'minphase',ip.Results.minphase);
                 EEG.vhtp.eeg_htpEegFilterEeglab.lowpassfiltorder    = 'dynamic';
             end
             EEG.vhtp.eeg_htpEegFilterEeglab.lowpass_completed = 1;
@@ -204,26 +213,24 @@ try
             EEG.vhtp.eeg_htpEegFilterEeglab.lowpassMinPhase    = ip.Results.minphase;
             
         case 'notch'
+            harmonics = 3;
+            linenoise = floor((ip.Results.notchfilt(1) + ip.Results.notchfilt(2)) / 2);
             if ~(ip.Results.dynamicfiltorder)
                 if ismissing(ip.Results.filtorder)
                     notchfiltorder = 3300;
                 else
                     notchfiltorder = ip.Results.filtorder;
                 end
-                linenoise = floor((ip.Results.notchfilt(1) + ip.Results.notchfilt(2)) / 2);
-                harmonics = floor((EEG.srate/2) / linenoise);
                 if EEG.srate < 2000
                     for i = 1 : harmonics
-                        EEG = pop_eegfiltnew(EEG, 'locutoff', (linenoise * i)-2, 'hicutoff', (linenoise * i)+2, 'filtorder',notchfiltorder,'revfilt', ip.Results.revfilt, 'plotfreqz',ip.Results.plotfreqz);
+                        EEG = pop_eegfiltnew(EEG, 'locutoff', (linenoise * i-(abs(ip.Results.notchfilt(1)-ip.Results.notchfilt(2))/2)), 'hicutoff', (linenoise * i+(abs(ip.Results.notchfilt(1)-ip.Results.notchfilt(2))/2)), 'filtorder',notchfiltorder,'revfilt', ip.Results.revfilt, 'plotfreqz',ip.Results.plotfreqz,'minphase',ip.Results.minphase);
                     end
                 end
-                EEG.vhtp.eeg_htpEegFilterEeglab.notchfiltorder    = 3300;
+                EEG.vhtp.eeg_htpEegFilterEeglab.notchfiltorder    = notchfiltorder;
             else
-                linenoise = floor((ip.Results.notchfilt(1) + ip.Results.notchfilt(2)) / 2);
-                harmonics = floor((EEG.srate/2) / linenoise);
                 if EEG.srate < 2000
                     for i = 1 : harmonics
-                        EEG = pop_eegfiltnew(EEG, 'locutoff', (linenoise * i)-2, 'hicutoff', (linenoise * i)+2, 'revfilt', ip.Results.revfilt, 'plotfreqz',ip.Results.plotfreqz);
+                        EEG = pop_eegfiltnew(EEG, 'locutoff', (linenoise * i-(abs(ip.Results.notchfilt(1)-ip.Results.notchfilt(2))/2)), 'hicutoff', (linenoise * i+(abs(ip.Results.notchfilt(1)-ip.Results.notchfilt(2))/2)), 'revfilt', ip.Results.revfilt, 'plotfreqz',ip.Results.plotfreqz,'minphase',ip.Results.minphase);
                     end
                 end
                 EEG.vhtp.eeg_htpEegFilterEeglab.notchfiltorder    = 'dynamic';
@@ -269,5 +276,14 @@ else
     EEG.vhtp.eeg_htpEegFilterEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegFilterEeglab;
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,['filter_' ip.Results.method]);
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
+
 end
 

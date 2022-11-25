@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegIcaEeglab(EEG,varargin)
-% eeg_htpEegIcaEeglab - Perform Independent Component Analysis on data
+% Description: Perform Independent Component Analysis on data
+% ShortTitle: Independent Component Analysis
+% Category: Preprocessing
+% Tags: Artifact
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegIcaEeglab( EEG, varargin )
@@ -22,6 +25,9 @@ function [EEG, results] = eeg_htpEegIcaEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %               
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
 %
 %% Outputs:
 %     EEG [struct]         - Updated EEGLAB structure
@@ -36,10 +42,12 @@ function [EEG, results] = eeg_htpEegIcaEeglab(EEG,varargin)
 %% Contact:
 %   kyle.cullion@cchmc.org
 
-if length(size(EEG.data))==3; defaultRank = getRank(double(reshape(EEG.data,EEG.nbchan,[])')); else; defaultRank = getRank(double(EEG.data')); end
+if length(size(EEG.data))==3; defaultRank = getrank(double(reshape(EEG.data,EEG.nbchan,[]))); else; defaultRank = getrank(double(EEG.data)); end
 defaultMethod = 'binica';
-defaultIcaDir = fullfile(pwd,'icaweights');
+defaultIcaDir = fullfile(dir(which('vhtpPreprocessGui')).folder,'icaweights');
 defaultSaveOutput = false;
+defaultOutputDir = '';
+
 % MATLAB built-in input validation
 ip = inputParser();
 ip.StructExpand = 0;
@@ -47,7 +55,8 @@ addRequired(ip, 'EEG', @isstruct);
 addParameter(ip, 'method',defaultMethod,@ischar);
 addParameter(ip,'rank',defaultRank,@isnumeric);
 addParameter(ip,'icadir',defaultIcaDir,@ischar);
-addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical)
+addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
 
 parse(ip,EEG,varargin{:});
 
@@ -86,6 +95,12 @@ catch e
 end
 
 EEG = eeg_checkset(EEG);
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    EEG.vhtp.inforow.proc_ica_method = ip.Results.method;
+    EEG.vhtp.inforow.proc_ica_dataRank = ip.Results.rank;
+end
+
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegIcaEeglab,'qi_table')
@@ -94,6 +109,16 @@ else
     EEG.vhtp.eeg_htpEegIcaEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegIcaEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'ica');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
+
 end
 
 function tmprank2 = getrank(tmpdata)
@@ -103,7 +128,7 @@ function tmprank2 = getrank(tmpdata)
     %Here: alternate computation of the rank by Sven Hoffman
     covarianceMatrix = cov(tmpdata', 1);
     [E, D] = eig (covarianceMatrix);
-    rankTolerance = 1e-7;
+    rankTolerance = 1e-6; % Per Makoto Miyakoshi recommendation for potential stability
     tmprank2=sum (diag (D) > rankTolerance);
     if tmprank ~= tmprank2
         fprintf('Warning: fixing rank computation inconsistency (%d vs %d) most likely because running under Linux 64-bit Matlab\n', tmprank, tmprank2);

@@ -1,5 +1,8 @@
 function [EEG,results] = eeg_htpEegInterpolateChansEeglab(EEG,varargin)
-% eeg_htpEegInterpolateChansEeglab - Interpolate channels utilizing specified method 
+% Description: Interpolate channels utilizing specified method 
+% ShortTitle: Channel Interpolation
+% Category: Preprocessing
+% Tags: Channel
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegInterpolateChansEeglab( EEG,varargin )
@@ -13,6 +16,10 @@ function [EEG,results] = eeg_htpEegInterpolateChansEeglab(EEG,varargin)
 %
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
+%
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
 %
 %% Outputs:
 %     EEG [struct]        - Updated EEGLAB structure
@@ -30,6 +37,7 @@ function [EEG,results] = eeg_htpEegInterpolateChansEeglab(EEG,varargin)
 defaultMethod='spherical';
 defaultChannels = [];
 defaultSaveOutput = false;
+defaultOutputDir = '';
 
 ip = inputParser();
 ip.StructExpand = 0;
@@ -37,6 +45,7 @@ addRequired(ip, 'EEG', @isstruct);
 addParameter(ip, 'method', defaultMethod,@ischar);
 addParameter(ip, 'channels', defaultChannels, @isnumeric);
 addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
 
 parse(ip,EEG,varargin{:});
 
@@ -85,6 +94,15 @@ catch error
 end
 
 EEG = eeg_checkset(EEG);
+
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    if isempty(badchannels)
+        EEG.vhtp.inforow.proc_interpolate_chans_ipChans = 'none';
+    else
+        EEG.vhtp.inforow.proc_interpolate_chans_ipChans = badchannels;
+    end
+end
+
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegInterpolateChansEeglab,'qi_table')
@@ -93,6 +111,15 @@ else
     EEG.vhtp.eeg_htpEegInterpolateChansEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegInterpolateChansEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'channel_interpolation');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
 
 end
 

@@ -1,5 +1,8 @@
 function [EEG, results] = eeg_htpEegRemoveChansEeglab(EEG,varargin)
-% eeg_htpEegRemoveChansEeglab - Mark channels for rejection and interpolation
+% Description: Mark channels for rejection and interpolation
+% ShortTitle: Reject Bad Channels
+% Category: Preprocessing
+% Tags: Channel
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegRemoveChansEeglab( EEG, varargin )
@@ -28,6 +31,10 @@ function [EEG, results] = eeg_htpEegRemoveChansEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: '' 
+%
 %% Outputs:
 %    EEG [struct]         - Updated EEGLAB structure
 %
@@ -47,6 +54,7 @@ defaultThreshold = 5;
 defaultRemoveChannel = true;
 defaultAutoMark = false;
 defaultSaveOutput = false;
+defaultOutputDir = '';
 
 
 ip = inputParser();
@@ -57,7 +65,8 @@ addParameter(ip, 'minimumduration',defaultMinimumDuration,@isnumeric);
 addParameter(ip,'threshold',defaultThreshold,@isnumeric);
 addParameter(ip,'removechannel', defaultRemoveChannel, @islogical);
 addParameter(ip, 'automark', defaultAutoMark, @islogical);
-addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical)
+addParameter(ip, 'saveoutput', defaultSaveOutput,@islogical);
+addParameter(ip,'outputdir', defaultOutputDir, @ischar);
 
 parse(ip,EEG,varargin{:});
 
@@ -66,8 +75,9 @@ parse(ip,EEG,varargin{:});
 timestamp = datestr(now, 'yymmddHHMMSS'); % timestamp
 functionstamp = mfilename; % function name for logging/output
 repeating = 1;
+vhtpExists = isfield(EEG,'vhtp');
 try
-    if isfield(EEG.vhtp,'eeg_htpEegRemoveChansEeglab') && isfield(EEG.vhtp.eeg_htpEegRemoveChansEeglab,'failReason')
+    if vhtpExists && (isfield(EEG.vhtp,'eeg_htpEegRemoveChansEeglab') && isfield(EEG.vhtp.eeg_htpEegRemoveChansEeglab,'failReason'))
         EEG.vhtp.eeg_htpEegRemoveChansEeglab=rmfield(EEG.vhtp.eeg_htpEegRemoveChansEeglab,'failReason');
     end
     original = EEG;
@@ -83,7 +93,7 @@ try
 
     end
     if ip.Results.trim
-        if ~isfield(EEG.vhtp,'eeg_htpEegRemoveChansEeglab')
+        if vhtpExists  && ~isfield(EEG.vhtp,'eeg_htpEegRemoveChansEeglab')
             EEG = trim_edges(EEG,10);
             if isfield(EEG.vhtp,'eeg_htpEegRemoveChansEeglab') && isfield(EEG.vhtp.eeg_htpEegRemoveChansEeglab,'failReason')
                 f=errordlg(sprintf('\t\tYOUR DATA IS SHORTER THAN THE SET MINIMUM DURATION OF %d SECONDS\n\n\t\tYOUR FILE WILL NOT UNDERGO MARKING BAD CHANNELS.',ip.Results.minimumduration));
@@ -112,7 +122,11 @@ try
             );
 
         h = findobj('tag', 'eegplottitle');
-        h.FontWeight = 'Bold'; h.FontSize = 16; h.Position = [0.5000 0.93 0];
+        h.FontWeight = 'Bold'; h.FontSize = 16; h.Position = [0.5000 0.975 0];
+
+        h=findobj(gcf, 'tag','eegslider');
+        h.Position = [.05 0.15 0.0150 0.7000]
+
         proc_badchans=[];
         chanlist = {EEG.chanlocs.labels};
 
@@ -129,7 +143,7 @@ try
             'max',EEG.nbchan,'min',1, ...
             'String', chanlist , 'Value', EEG.vhtp.eeg_htpEegRemoveChansEeglab.proc_autobadchannel,...
             'Units', 'normalized', ...
-            'Position', [.05 0.15 0.035 .70], 'BackgroundColor', [0.94 0.94 0.94]);
+            'Position', [0.0100 0.1500 0.035 .70], 'BackgroundColor', [0.94 0.94 0.94]);
 
         showBadDetail = uicontrol(handle,...
             'Tag', 'detailbutton', ...
@@ -147,7 +161,7 @@ try
 
         textBadChannels = uicontrol(handle, 'Style', 'text', ...
             'String', 'Manual Bad Channel Rejection: no channels selected', 'Tag', 'badchantitle', ...
-            'FontSize', 14,    'Units', 'normalized', 'Position', [0.1 0.89 0.3 0.03], 'HorizontalAlignment', 'left');
+            'FontSize', 8,    'Units', 'normalized', 'Position', [0.095 0.89 0.825 0.0625], 'HorizontalAlignment', 'left');
 
 
         waitfor(gcf);
@@ -163,7 +177,7 @@ try
         else
             EEG.vhtp.eeg_htpEegRemoveChansEeglab.proc_badchans = proc_badchans;
         end
-
+        
         % display check for user
         channel_labels = {EEG.chanlocs.labels};
         nochannel_idx = channel_labels(proc_badchans);
@@ -172,7 +186,7 @@ try
         eegplot(EEG_Temp.data,'srate',EEG.srate,'winlength',10, ...
             'plottitle', [sprintf('Review Channel Removal for for Subject %s',regexprep(EEG.subject,'^*\.\w+$',''))], ...
             'events',EEG.event,'color',carr,'wincolor',[1 0.5 0.5], ...
-            'eloc_file',EEG.chanlocs,  'butlabel', 'Close Window', 'submean', 'on', ...
+            'eloc_file',EEG_Temp.chanlocs,  'butlabel', 'Close Window', 'submean', 'on', ...
             'command', 't = 1', 'position', [400 400 1024 768] ...
             );
 
@@ -185,8 +199,12 @@ try
 
         waitfor(gcf);
 
-        answer = questdlg(sprintf('Would you like to Re-do the Marking Bad Channel Process for Subject %s?',regexprep(EEG.subject,'^*\.\w+$','')),'Channel Removal Repeat','Repeat','Continue','Continue');
-        
+        if ~isempty(proc_badchans)
+            answer = questdlg(sprintf('Would you like to Re-do the Marking Bad Channel Process for Subject %s?',regexprep(EEG.subject,'^*\.\w+$','')),'Channel Removal Repeat','Repeat','Continue','Continue');
+        else
+            answer = questdlg(sprintf('Are you sure you would like to remove 0 electrodes?'),'Channel Removal Repeat','Repeat','Continue','Continue');
+        end
+
         if isempty(answer) || strcmp(answer, 'Repeat')
             repeating = 1;
         else
@@ -197,7 +215,7 @@ try
 catch e
     throw(e)
 end
-
+close(findobj('Type','figure'));
 EEG=eeg_checkset(EEG);
 
 % EP update 6/16/2022
@@ -205,15 +223,30 @@ EEG=eeg_checkset(EEG);
 % added to optimize inline ASR
 
 if ip.Results.removechannel
-    fprintf('eeg_htpEegRemoveChannelsEeglab: Remove Channels ON \n');
-    channel_labels = {EEG.chanlocs.labels};
-    nochannel_idx = channel_labels(proc_badchans);
-    EEG = pop_select( EEG, 'nochannel',  nochannel_idx);
+    if ~isempty(proc_badchans)
+        fprintf('eeg_htpEegRemoveChannelsEeglab: Remove Channels ON \n');
+        channel_labels = {EEG.chanlocs.labels};
+        nochannel_idx = channel_labels(proc_badchans);
+        EEG = pop_select( EEG, 'nochannel',  nochannel_idx);
+    end
 else
     fprintf('eeg_htpEegRemoveChannelsEeglab: Mark Channels Only \n')
 end
 %
-
+if isfield(EEG,'vhtp') && isfield(EEG.vhtp,'inforow')
+    if isempty(proc_badchans)
+        EEG.vhtp.inforow.proc_removal_chans_badChans = 'none';
+        EEG.vhtp.inforow.proc_removal_chans_nbchan = EEG.nbchan;
+    else
+        EEG.vhtp.inforow.proc_removal_chans_badChans = EEG.vhtp.eeg_htpEegRemoveChansEeglab.proc_badchans;
+        EEG.vhtp.inforow.proc_removal_chans_nbchan = EEG.vhtp.inforow.raw_nbchan - length(EEG.vhtp.inforow.proc_removal_chans_badChans);
+    end
+    if ip.Results.removechannel
+        EEG.vhtp.inforow.proc_removal_chans_method = 'Remove';
+    else
+        EEG.vhtp.inforow.proc_removal_chans_method = 'Mark';
+    end
+end
 qi_table = cell2table({EEG.filename, functionstamp, timestamp}, ...
     'VariableNames', {'eegid','scriptname','timestamp'});
 if isfield(EEG.vhtp.eeg_htpEegRemoveChansEeglab,'qi_table')
@@ -222,6 +255,15 @@ else
     EEG.vhtp.eeg_htpEegRemoveChansEeglab.qi_table = qi_table;
 end
 results = EEG.vhtp.eeg_htpEegRemoveChansEeglab;
+
+if ip.Results.saveoutput && ~isempty(ip.Results.outputdir)
+    if isfield(EEG.vhtp, 'currentStep')
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,EEG.vhtp.currentStep);
+    else
+        EEG = util_htpSaveOutput(EEG,ip.Results.outputdir,'channel_removal');
+    end
+    fprintf('Output was copied to %s\n\n',ip.Results.outputdir);
+end
 
     function  EEG=showChanDetail(EEG)
 
