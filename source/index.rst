@@ -11,3 +11,4 @@ Welcome to VHTP's documentation!
    :caption: Contents:
    
    Preprocess/index
+   Troubleshooting/index
