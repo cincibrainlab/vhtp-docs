@@ -1,4 +1,4 @@
-PIPELINE NOTES
+Troubleshooting and Tips
 ==============
 
 # Linux

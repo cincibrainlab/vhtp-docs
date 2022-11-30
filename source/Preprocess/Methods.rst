@@ -15,7 +15,11 @@ Channel Interpolation
 
 Channel Removal
 ---------------
-.. autofunction:: eeg_htpEegRemoveChansEeglab
+.. mat:autofunction:: eeg_htpEegRemoveChansEeglab
+
+Component Removal
+-----------------
+.. mat:autofunction:: eeg_htpEegRemoveCompsEeglab
 
 Epoch Creation
 --------------
@@ -29,7 +33,17 @@ Epoch Removal
 
 Filtering
 ---------
+.. mat:autofunction:: eeg_htpEegHighpassFilterEeglab
+
+.. mat:autofunction:: eeg_htpEegLowpassFilterEeglab
+
+.. mat:autofunction:: eeg_htpEegNotchFilterEeglab
+
 .. mat:autofunction:: eeg_htpEegFilterEeglab
+
+.. mat:autofunction:: eeg_htpEegBandpassFilterEeglab
+
+.. mat:autofunction:: eeg_htpEegCleanlineFilterEeglab
 
 Independent Component Analysis
 ------------------------------
