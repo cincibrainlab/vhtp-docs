@@ -30,18 +30,17 @@ function [EEG, results] = eeg_htpEegRemoveCompsEeglab(EEG,varargin)
 %                 default: [2 80]
 %
 %% Outputs:
-%     EEG         - Updated EEGLAB structure
+%     EEG [struct]         - Updated EEGLAB structure
 %
-%     results   - Updated function-specific structure containing qi table
-%                 and input parameters used
+%     results [struct]   - Updated function-specific structure containing qi table and input parameters used
 %
 %% Disclaimer:
-% This file is part of the Cincinnati Visual High Throughput Pipeline,
+%  This file is part of the Cincinnati Visual High Throughput Pipeline
 %  
-% Please see http://github.com/cincibrainlab
+%  Please see http://github.com/cincibrainlab
 %
 %% Contact:
-%  Contact: kyle.cullion@cchmc.org
+%  kyle.cullion@cchmc.org
 
 defaultMaxComps = 24;
 defaultDPreset = 'dynamic';
