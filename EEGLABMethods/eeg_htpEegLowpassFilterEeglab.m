@@ -11,7 +11,6 @@ function [EEG,results] = eeg_htpEegLowpassFilterEeglab(EEG,varargin)
 %     EEG [struct]         - EEGLAB Structure
 %
 %% Function Specific Inputs:
-%
 %   'lowpassfilt' - Number representing the higher edge frequency to use in 
 %                   lowpass bandpass filter 
 %                   default: 80
