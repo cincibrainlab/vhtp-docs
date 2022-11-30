@@ -1,8 +1,8 @@
 function [EEG,results] = eeg_htpEegCleanlineFilterEeglab(EEG,varargin)
-% Description: Perform Cleanline filtering on data
-% ShortTitle: Filter EEG using EEGLAB
-% Category: Preprocessing
-% Tags: Filter
+%% Description: Perform Cleanline filtering on data
+%% ShortTitle: Filter EEG using EEGLAB
+%% Category: Preprocessing
+%% Tags: Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegCleanlineFilterEeglab( EEG, varargin)
@@ -11,7 +11,6 @@ function [EEG,results] = eeg_htpEegCleanlineFilterEeglab(EEG,varargin)
 %     EEG [struct]         - EEGLAB Structure
 %
 %% Function Specific Inputs:
-%
 %   'cleanlinebandwidth' - Number for width of spectral peak  for fixed frequency
 %                          default: 2
 %

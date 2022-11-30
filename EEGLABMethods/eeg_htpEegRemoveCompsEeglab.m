@@ -1,16 +1,16 @@
 function [EEG, results] = eeg_htpEegRemoveCompsEeglab(EEG,varargin)
-% Description: Select and reject/keep components from data
-% ShortTitle: Visual component removal
-% Category: Preprocessing
-% Tags: Artifact
+%% Description: Select and reject/keep components from data
+%% ShortTitle: Visual component removal
+%% Category: Preprocessing
+%% Tags: Artifact
 %
-% Usage:
+%% Usage:
 %    >> [ EEG, results ] = eeg_htpEegRemoveCompsEeglab( EEG, varargin )
 %
-% Require Inputs:
+%% Require Inputs:
 %     EEG           - EEGLAB Structure
 %
-% Function Specific Inputs:
+%% Function Specific Inputs:
 %    'maxcomps'  - Number of maximum components to utilize
 %                  in thresholding and plotting
 %                  default: 24

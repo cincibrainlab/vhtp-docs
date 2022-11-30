@@ -1,8 +1,8 @@
 function [EEG,results] = eeg_htpEegLowpassFilterEeglab(EEG,varargin)
-% Description: Perform Lowpass filtering on data
-% ShortTitle: High Pass Filter EEG using EEGLAB
-% Category: Preprocessing
-% Tags: Filter
+%% Description: Perform Lowpass filtering on data
+%% ShortTitle: High Pass Filter EEG using EEGLAB
+%% Category: Preprocessing
+%% Tags: Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegLowpassFilterEeglab( EEG, varargin)
@@ -19,7 +19,7 @@ function [EEG,results] = eeg_htpEegLowpassFilterEeglab(EEG,varargin)
 %   'revfilt' - Logical boolean to invert filter from bandpass to notch
 %               default: false e.g. {false -> bandpass, true -> notch}
 %
-%   'plotfreqz' - Numeric boolean to indicate whether to plot filter's frequency and phase response
+%   'plotfreqz' - Numeric boolean to indicate whether to plot filter frequency and phase response
 %                 default: 0
 %
 %

@@ -1,7 +1,8 @@
 function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
-%eeg_htpEegAsrCleanEeglab
-%
-% eeg_htpEegAsrCleanEeglab - Perform ASR cleaning via the clean_rawdata plugin provided through the EEGLAB interface
+%% Description: Perform ASR cleaning via the clean_rawdata plugin provided through the EEGLAB interface
+%% ShortTitle: Artifact Subspace Reconstruction
+%% Category: preprocessing
+%% Tags: Artifact
 %
 %% Usage:
 %    [ EEG, results ] = eeg_htpEegAsrCleanEeglab( EEG, varargin )

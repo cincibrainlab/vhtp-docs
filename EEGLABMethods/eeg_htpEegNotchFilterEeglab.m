@@ -1,8 +1,8 @@
 function [EEG,results] = eeg_htpEegNotchFilterEeglab(EEG,varargin)
-% Description: Perform Notch filtering on data
-% ShortTitle: Notch Filter EEG using EEGLAB
-% Category: Preprocessing
-% Tags: Filter
+%% Description: Perform Notch filtering on data
+%% ShortTitle: Notch Filter EEG using EEGLAB
+%% Category: Preprocessing
+%% Tags: Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegNotchFilterEeglab( EEG, varargin)

@@ -1,8 +1,8 @@
 function [EEG, results] = eeg_htpEegCreateEpochsEeglab(EEG,varargin)
-% Description: Perform epoch creation for Non-ERP datasets
-% ShortTitle: Create Regular Epochs (EEGLAB)
-% Category: Preprocessing
-% Tags: Epoching
+%% Description: Perform epoch creation for Non-ERP datasets
+%% ShortTitle: Create Regular Epochs (EEGLAB)
+%% Category: Preprocessing
+%% Tags: Epoching
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegCreateEpochsEeglab( EEG, varargin )
@@ -20,7 +20,7 @@ function [EEG, results] = eeg_htpEegCreateEpochsEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step while using VHTP preprocessing tool
 %                  default: false
 %   
-%  'outputdir' - text representing the output directory for the function
+%   'outputdir' - text representing the output directory for the function
 %                 output to be saved to
 %                 default: ''      
 %
