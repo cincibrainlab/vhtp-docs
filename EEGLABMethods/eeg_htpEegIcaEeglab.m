@@ -12,7 +12,7 @@ function [EEG, results] = eeg_htpEegIcaEeglab(EEG,varargin)
 %
 %% Function Specific Inputs:
 %   'method'  - Text representing method utilized for ICA
-%               default: 'binica' e.g. {'binica', cudaica', 'runica'}
+%               default: 'binica' e.g. {'binica', 'cudaica', 'runica'}
 %
 %   'rank' - Number representing the data rank of input data
 %            default: getrank(double(EEG.data))
@@ -25,8 +25,7 @@ function [EEG, results] = eeg_htpEegIcaEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %               
-%   'outputdir' - text representing the output directory for the function
-%                 output to be saved to
+%   'outputdir' - text representing the output directory for the function output to be saved to
 %                 default: '' 
 %
 %% Outputs:

@@ -17,7 +17,7 @@ function [EEG,results] = eeg_htpEegBandpassFilterEeglab(EEG,varargin)
 %   'revfilt' - logical boolean to invert filter from bandpass to notch
 %               default: false e.g. {false -> bandpass, true -> notch}
 %
-%   'plotfreqz' - Numeric boolean to indicate whether to plot filter's frequency and phase response
+%   'plotfreqz' - Numeric boolean to indicate whether to plot filter frequency and phase response
 %                 default: 0
 %
 %   'minphase' - Boolean for minimum-phase converted causal filter
@@ -32,8 +32,7 @@ function [EEG,results] = eeg_htpEegBandpassFilterEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %
-%   'outputdir' - text representing the output directory for the function
-%                 output to be saved to
+%   'outputdir' - text representing the output directory for the function output to be saved to
 %                 default: '' 
 %
 %% Outputs:

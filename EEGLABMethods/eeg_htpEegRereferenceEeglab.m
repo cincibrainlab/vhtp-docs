@@ -1,7 +1,10 @@
 function [EEG, results] = eeg_htpEegRereferenceEeglab(EEG,varargin)
 %% Description: Rereference data to Average Reference.
+%
 %% ShortTitle: Average reference EEG data
+%
 %% Category: Preprocessing
+%
 %% Tags: Channel
 %
 %% Syntax:
@@ -14,8 +17,7 @@ function [EEG, results] = eeg_htpEegRereferenceEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %
-%   'outputdir' - text representing the output directory for the function
-%                 output to be saved to
+%   'outputdir' - text representing the output directory for the function output to be saved to
 %                 default: '' 
 %
 %% Outputs:
