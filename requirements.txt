@@ -28,6 +28,6 @@ sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-matlabdomain==0.14.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
-sphinx-toolbox
+sphinx-collapse
 urllib3==1.26.12
 zipp==3.8.1
