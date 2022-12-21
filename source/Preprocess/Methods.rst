@@ -22,7 +22,9 @@ Component Removal
 .. mat:autofunction:: eeg_htpEegRemoveCompsEeglab
  
 
-.. collapse:: Epoch Creation
+Epoch Creation
+--------------
+.. collapse:: Methods
 
     .. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
 
