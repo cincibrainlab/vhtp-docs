@@ -7,7 +7,7 @@ function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
 %
 %% Tags: Artifact
 %
-%% Usage:
+%% Syntax:
 %    [ EEG, results ] = eeg_htpEegAsrCleanEeglab( EEG, varargin )
 %
 %% Required Inputs:
@@ -62,7 +62,10 @@ function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
 %   'saveoutput' - Boolean representing if output should be saved when executing step from VHTP preprocessing tool
 %                  default: false
 %
-%           
+%   'outputdir' - text representing the output directory for the function
+%                 output to be saved to
+%                 default: ''      
+%          
 %% Outputs:
 %     EEG [struct]         - Updated EEGLAB structure
 %

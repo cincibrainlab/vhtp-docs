@@ -7,10 +7,10 @@ function [EEG, results] = eeg_htpEegRemoveCompsEeglab(EEG,varargin)
 %
 %% Tags: Artifact
 %
-%% Usage:
-%    >> [ EEG, results ] = eeg_htpEegRemoveCompsEeglab( EEG, varargin )
+%% Syntax:
+%    [ EEG, results ] = eeg_htpEegRemoveCompsEeglab( EEG, varargin )
 %
-%% Require Inputs:
+%% Required Inputs:
 %     EEG [struct]          - EEGLAB Structure
 %
 %% Function Specific Inputs:
