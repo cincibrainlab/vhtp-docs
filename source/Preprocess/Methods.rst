@@ -24,10 +24,13 @@ Component Removal
 
 Epoch Creation
 --------------
+
 .. collapse:: eeg_htpEegCreateEpochsEeglab
+
     .. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
 
 .. collapse:: eeg_htpEegCreateErpEpochsEeglab   
+
     .. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
 
 Epoch Removal
