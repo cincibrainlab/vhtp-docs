@@ -20,13 +20,14 @@ Channel Removal
 Component Removal
 -----------------
 .. mat:autofunction:: eeg_htpEegRemoveCompsEeglab
-
-.. collapse:: 
+ 
 Epoch Creation
 --------------
-.. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
 
-.. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
+.. collapse::
+    .. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
+
+    .. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
 
 Epoch Removal
 -------------
