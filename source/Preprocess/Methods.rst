@@ -24,9 +24,9 @@ Component Removal
 
 .. collapse:: Epoch Creation
 
-.. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
+    .. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
 
-.. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
+    .. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
 
 Epoch Removal
 -------------
