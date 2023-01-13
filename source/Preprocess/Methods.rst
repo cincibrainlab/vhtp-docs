@@ -66,3 +66,5 @@ Rereference
 Resampling
 ---------------
 .. mat:autofunction:: eeg_htpEegResampleDataEeglab
+
+!!!!!!!!!! there are 2 more functions that seem to be in this category !!!!!! "eeg_htpEegSimulateEeg" and "eeg_htpEegWaveletDenoiseHappe"

@@ -1,5 +1,5 @@
 Troubleshooting and Tips
-==============
+==========================
 
 # Linux
     * To  properly install ICLabel for Debian-based Linux OSes, ensure that the following packages are installed: build-essentials and libjpeg-turbo8-dev.  

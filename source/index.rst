@@ -7,8 +7,10 @@ Welcome to VHTP's documentation!
 =========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
    :caption: Contents:
    
    Preprocess/index
    Troubleshooting/index
+   Calc/index
+   Visualize/index
