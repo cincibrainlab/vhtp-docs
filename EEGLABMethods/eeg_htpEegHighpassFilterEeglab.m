@@ -1,11 +1,11 @@
 function [EEG, results] = eeg_htpEegHighpassFilterEeglab(EEG,varargin)
-%% **Description:** Perform Highpass filtering on data
+%% Description: Perform Highpass filtering on data
 %
-%% **ShortTitle:** High Pass Filter EEG using EEGLAB
+%% ShortTitle: High Pass Filter EEG using EEGLAB
 %
-%% **Category:** Preprocessing
+%% Category: Preprocessing
 %
-%% **Tags:** Filter
+%% Tags: Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegHighpassFilterEeglab( EEG, varargin)
