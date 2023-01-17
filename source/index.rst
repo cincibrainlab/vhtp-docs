@@ -4,11 +4,13 @@
    contain the root `toctree` directive.
 
 Welcome to VHTP's documentation!
-=========================================
+================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
    
    Preprocess/index
+   Calc/index
+   Visualize/index
    Troubleshooting/index

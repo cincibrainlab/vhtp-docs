@@ -1,11 +1,11 @@
 function [EEG,results] = eeg_htpEegCleanlineFilterEeglab(EEG,varargin)
-%% Description: Perform Cleanline filtering on data
+%% **Description:** Perform Cleanline filtering on data
 %
-%% ShortTitle: Filter EEG using EEGLAB
+%% **ShortTitle:** Filter EEG using EEGLAB
 %
-%% Category: Preprocessing
+%% **Category:** Preprocessing
 %
-%% Tags: Filter
+%% **Tags:** Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegCleanlineFilterEeglab( EEG, varargin)
