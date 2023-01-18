@@ -36,13 +36,17 @@ Epoch Creation
 
     .. mat:autofunction:: eeg_htpEegCreateEpochsEeglab
 
+.. collapse:: eeg_htpEegCreateErpEpochsEeglab   
+
+    .. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
+
 .. collapse:: eeg_htpEegCreateEpochsHabEeglab   
 
     .. mat:autofunction:: eeg_htpEegCreateEpochsHabEeglab
 
-.. collapse:: eeg_htpEegCreateErpEpochsEeglab   
+.. collapse:: eeg_htpEegEpoch2Cont   
 
-    .. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
+    .. mat:autofunction:: eeg_htpEegEpoch2Cont
 
 Epoch Removal
 -------------
@@ -63,6 +67,9 @@ Filtering
 .. mat:autofunction:: eeg_htpEegBandpassFilterEeglab
 
 .. mat:autofunction:: eeg_htpEegCleanlineFilterEeglab
+
+.. mat:autofunction:: eeg_htpEegFrequencyInterpolation
+
 
 Independent Component Analysis
 ------------------------------
