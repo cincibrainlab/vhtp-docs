@@ -10,7 +10,7 @@ function [EEG, results, aEEG] = eeg_htpEegWaveletDenoiseHappe(EEG, varargin)
 %       | Original implementation by Dr. Gabard-Durham:
 %       | https://github.com/PINE-Lab/HAPPE/blob/master/scripts/pipeline_scripts/happe_wavThresh.m
 %
-%       Requirements: Mathworks MATLAB Wavelet toolkit for wdenoise function.
+%       | Requirements: Mathworks MATLAB Wavelet toolkit for wdenoise function.
 %
 %% Usage:
 %    [ EEG, results ] = eeg_htpEegWaveletDenoiseHappe( EEG, options )

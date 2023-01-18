@@ -6,7 +6,8 @@ function [EEG, results] = eeg_htpCalcHabErp( EEG, varargin )
 %% **Category:** Analysis
 %
 %% **Tags:** ERP
-%   | Derivied from habituation task (Ethridge 2019).
+%
+%       | Derivied from habituation task (Ethridge 2019).
 %
 %% Syntax:
 %   | [ EEG ] = eeg_htpCalcHabErp( EEG, varargin )

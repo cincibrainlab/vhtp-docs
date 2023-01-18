@@ -6,8 +6,9 @@ function [x] = eeg_htpCalcReturnColumnMatrix(EEG)
 %% **Category:** Analysis
 %
 %% **Tags:** Transform
-%   | Example form: 1000 samples x 100 channels (size(x))
-%   | Uses optional fast_fc filtering to return bandpass signal.
+%
+%       | Example form: 1000 samples x 100 channels (size(x))
+%       | Uses optional fast_fc filtering to return bandpass signal.
 %
 %% Syntax:
 %   | [ EEG, results ] = eeg_htpCalcReturnColumnMatrix( EEG, varargin )

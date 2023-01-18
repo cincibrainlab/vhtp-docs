@@ -6,10 +6,11 @@ function [EEG, results] = eeg_htpCalcLaplacian(EEG, varargin)
 %% **ShortTitle:** Laplacian Spatial Filtering
 %
 %% **Tags:** Filter
-%   | Cohen's implementation of Perrin et al. (1989). This function is a wrapper
-%   | for laplacian_perrinX (unmodified) from
-%   | https://github.com/mikexcohen/AnalyzingNeuralTimeSeries/blob/main/laplacian_perrinX.m
-%   | Units are in microvolts per mm^2.
+%
+%       | Cohen's implementation of Perrin et al. (1989). This function is a wrapper
+%       | for laplacian_perrinX (unmodified) from
+%       | https://github.com/mikexcohen/AnalyzingNeuralTimeSeries/blob/main/laplacian_perrinX.m
+%       | Units are in microvolts per mm^2.
 %
 %% Syntax:
 %   | [ EEG, results ] = eeg_htpCalcLaplacian( EEG )

@@ -6,10 +6,11 @@ function [EEG, results] = eeg_htpCalcChirpItcErsp(EEG, varargin)
 %% **Category:** Analysis
 %
 %% **Tags:** ERP
-%   | Original code designed for auditory chirp presentation.
-%   | Note: newtimef() is a legacy EEGLAB function that is highly
-%   | dependent on EEGLAB timefreq.m which is frequently updated. Future
-%   | version of this code will embed relevant itc/ersp functions.
+%
+%       | Original code designed for auditory chirp presentation.
+%       | Note: newtimef() is a legacy EEGLAB function that is highly
+%       | dependent on EEGLAB timefreq.m which is frequently updated. Future
+%       | version of this code will embed relevant itc/ersp functions.
 %
 %% Syntax:
 %   | [ EEG ] = eeg_htpCalcChirpItcErsp( EEG, varargin )
@@ -18,7 +19,7 @@ function [EEG, results] = eeg_htpCalcChirpItcErsp(EEG, varargin)
 %   | EEG [struct]          - EEGLAB Structure
 %
 %% Function Specific Inputs:
-%   | 'option1' - description
+%   | **'option1' - description**
 %
 %% Outputs:
 %   EEG       - EEGLAB Structure with modified .etc.htp field

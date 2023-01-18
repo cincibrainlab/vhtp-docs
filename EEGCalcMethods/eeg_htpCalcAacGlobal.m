@@ -6,8 +6,9 @@ function [EEG, results] = eeg_htpCalcAacGlobal( EEG, varargin )
 %% **Category:** Analysis
 %
 %% **Tags:** Connectivity
-%   | Implemented as described in Wang et al. (2017). Global (mean) power
-%   | of the low frequency band is coupled with local gamma power.
+%
+%       | Implemented as described in Wang et al. (2017). Global (mean) power
+%       | of the low frequency band is coupled with local gamma power.
 %
 %% Syntax:
 %   | [ EEG, results ] = eeg_htpCalcAacGlobal( EEG, varargin )

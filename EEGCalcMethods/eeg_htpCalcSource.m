@@ -6,9 +6,10 @@ function [EEG2, results] = eeg_htpCalcSource(EEG, varargin)
 %% **Category:** Analysis
 %
 %% **Tags:** Source
-%   | By default the function creates an minimum norm estimate source model from
-%   | EGI-128 formatted data. The datasets are stored as SET files with
-%   | atlas regions as channels.
+%
+%       | By default the function creates an minimum norm estimate source model from
+%       | EGI-128 formatted data. The datasets are stored as SET files with
+%       | atlas regions as channels.
 %
 %% Syntax:
 %   | [ EEG, results ] = eeg_htpComputeSource( EEG )

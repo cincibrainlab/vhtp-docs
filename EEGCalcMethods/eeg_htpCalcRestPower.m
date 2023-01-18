@@ -6,10 +6,11 @@ function [EEG, results] = eeg_htpCalcRestPower(EEG, varargin)
 %% **ShortTitle:** Resting Spectral Power Analysis
 %
 %% **Tags:** Power
-%   | Power is calculated using MATLAB pWelch function. Key parameter is
-%   | window length with longer window providing increased frequency
-%   | resolution. Overlap is set at default at 50%. A hanning window is
-%   | also implemented. Speed is greatly increased by GPU.
+%
+%       | Power is calculated using MATLAB pWelch function. Key parameter is
+%       | window length with longer window providing increased frequency
+%       | resolution. Overlap is set at default at 50%. A hanning window is
+%       | also implemented. Speed is greatly increased by GPU.
 %
 %% Syntax:
 %   | [ EEG, results ] = eeg_htpCalcRestPower( EEG, varargin )

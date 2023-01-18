@@ -7,8 +7,8 @@ function [EEG, results] = eeg_htpGraphBraphWU( EEG, A, chanlabels, freqlabels )
 %
 %% **Tags:** Connectivity
 %
-%   | Braph 1.0 toolbox and Brain Connectivity Toolbox (can be found in fieldtrip). 
-%   | G is defined as a chan x chan x freq matrix of WEIGHTED UNDIRECTED graphs.
+%       | Braph 1.0 toolbox and Brain Connectivity Toolbox (can be found in fieldtrip). 
+%       | G is defined as a chan x chan x freq matrix of WEIGHTED UNDIRECTED graphs.
 %
 %% Dependencies:
 %   Braph 1.0 Toolbox     https://github.com/softmatterlab/BRAPH

@@ -17,11 +17,9 @@ function [summary_table] = eeg_htpEegAssessPipelineHAPPE(EEG1, EEG2, varargin)
 %   7. comparison spectrogram with difference line plot
 %   8. histogram of differences as % of max delta power
 %
-%% **original code: Alexa D. Monachino, PINE Lab at Northeastern University, 2021**
-%
-% https://github.com/PINE-Lab/HAPPE/blob/master/scripts/pipeline_scripts/assessPipelineStep.m
-%
-% **VHTP adaptation by E. Pedapati 3/19/2022**
+%       | original code: Alexa D. Monachino, PINE Lab at Northeastern University, 2021
+%       | https://github.com/PINE-Lab/HAPPE/blob/master/scripts/pipeline_scripts/assessPipelineStep.m
+%       | VHTP adaptation by E. Pedapati 3/19/2022
 %
 %% Disclaimer:
 %   Part of the Cincinnati Visual High Throughput EEG Pipeline

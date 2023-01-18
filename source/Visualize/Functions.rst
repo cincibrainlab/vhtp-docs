@@ -13,7 +13,7 @@ Phase-based connectivity analysis
 ---------------------------------
 .. mat:autofunction:: eeg_htpGraphPhaseBcm
 
-eeg_htpPlotSingleChannel *Documentation not fixed*
+eeg_htpPlotSingleChannel
 --------------------------------------------------
 .. mat:autofunction:: eeg_htpPlotSingleChannel
 

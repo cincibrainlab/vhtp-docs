@@ -7,9 +7,9 @@ function [EEG] = eeg_htpEegSimulateEeg( varargin )
 %
 %% **Tags:** Simulation
 %
-%   | adapted from Michael X Cohen
-%   | https://github.com/mikexcohen/NeuroscienceSourceSeparation/blob/main/ANT_temporalFiltering.m
-%   | adapted from https://data.mrc.ox.ac.uk/data-set/simulated-eeg-data-generator
+%       | adapted from Michael X Cohen
+%       | https://github.com/mikexcohen/NeuroscienceSourceSeparation/blob/main/ANT_temporalFiltering.m
+%       | adapted from https://data.mrc.ox.ac.uk/data-set/simulated-eeg-data-generator
 %
 % Syntax:
 %   [ EEG, results ] = eeg_htpEegSimulateEeg()
