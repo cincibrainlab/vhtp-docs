@@ -1,7 +1,7 @@
-Functions
+Analysis Functions
 =====================
 
-Here you will find the available methods and their respective parameters and usage for the EEGLAB module of preprocessing.
+Here you will find the available methods and their respective parameters and usage for Analysis.
 
 .. module:: EEGCalcMethods
 

@@ -13,4 +13,5 @@ Welcome to VHTP's documentation!
    Preprocess/index
    Calc/index
    Visualize/index
+   Utility/index
    Troubleshooting/index
