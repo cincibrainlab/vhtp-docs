@@ -63,9 +63,8 @@ function [EEG2, results] = eeg_htpCalcSource(EEG, varargin)
 %% Contact:
 %   | ernest.pedapati@cchmc.org
 %
-% |
-% | Headmodels are available at:
-% | https://figshare.com/articles/dataset/Precomputed_Headmodels_for_EEG_Source_Localization/20067350
+%       | Headmodels are available at:
+%       | https://figshare.com/articles/dataset/Precomputed_Headmodels_for_EEG_Source_Localization/20067350
 
     timestamp = datestr(now, 'yymmddHHMMSS'); % timestamp
     functionstamp = mfilename; % function name for logging/output
