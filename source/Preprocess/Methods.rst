@@ -9,6 +9,10 @@ Artifact Subspace Reconstruction
 --------------------------------
 .. mat:autofunction:: eeg_htpEegAsrCleanEeglab
 
+QA EEG1 vs. EEG2 Comparison
+---------------------------
+.. mat:autofunction:: eeg_htpEegAssessPipelineHAPPE
+
 Channel Interpolation
 ---------------------
 .. mat:autofunction:: eeg_htpEegInterpolateChansEeglab
@@ -20,7 +24,10 @@ Channel Removal
 Component Removal
 -----------------
 .. mat:autofunction:: eeg_htpEegRemoveCompsEeglab
- 
+
+Wavelet thresholding artifact removal
+-------------------------------------
+.. mat:autofunction:: eeg_htpEegWaveletDenoiseHappe
 
 Epoch Creation
 --------------
@@ -32,6 +39,14 @@ Epoch Creation
 .. collapse:: eeg_htpEegCreateErpEpochsEeglab   
 
     .. mat:autofunction:: eeg_htpEegCreateErpEpochsEeglab
+
+.. collapse:: eeg_htpEegCreateEpochsHabEeglab   
+
+    .. mat:autofunction:: eeg_htpEegCreateEpochsHabEeglab
+
+.. collapse:: eeg_htpEegEpoch2Cont   
+
+    .. mat:autofunction:: eeg_htpEegEpoch2Cont
 
 Epoch Removal
 -------------
@@ -47,9 +62,14 @@ Filtering
 
 .. mat:autofunction:: eeg_htpEegFilterEeglab
 
+.. mat:autofunction:: eeg_htpEegFilterFastFc
+
 .. mat:autofunction:: eeg_htpEegBandpassFilterEeglab
 
 .. mat:autofunction:: eeg_htpEegCleanlineFilterEeglab
+
+.. mat:autofunction:: eeg_htpEegFrequencyInterpolation
+
 
 Independent Component Analysis
 ------------------------------
@@ -66,3 +86,7 @@ Rereference
 Resampling
 ---------------
 .. mat:autofunction:: eeg_htpEegResampleDataEeglab
+
+Simulate EEG signal
+-------------------
+.. mat:autofunction:: eeg_htpEegSimulateEeg
