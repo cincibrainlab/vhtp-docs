@@ -16,7 +16,7 @@ function [EEG, results] = eeg_htpGraphPhaseBcm(EEG, varargin)
 %    [ EEG, results ] = eeg_htpGraphPhaseBcm( EEG )
 %
 %% Require Inputs:
-%     EEG       - EEGLAB Structure
+%   | EEG [struct]          - EEGLAB Structure
 %
 %% Function Specific Inputs:
 %     **'outputdir' - description**
@@ -26,7 +26,7 @@ function [EEG, results] = eeg_htpGraphPhaseBcm(EEG, varargin)
 %     **'combos' - manually specify cell array of channel pairs to calculate**
 %
 %% Outputs:
-%     EEG       - EEGLAB Structure with modified .vhtp field
+%     EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %     results   - .vhtp structure
 %

@@ -3,7 +3,7 @@ function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
 %
 %% **Short Title:** Artifact Subspace Reconstruction
 %
-%% **Category:** preprocessing
+%% **Category:** Preprocessing
 %
 %% **Tags:** Artifact
 %

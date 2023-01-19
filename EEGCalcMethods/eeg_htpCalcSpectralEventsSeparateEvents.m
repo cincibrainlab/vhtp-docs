@@ -43,7 +43,7 @@ function [EEG, results] = eeg_htpCalcSpectralEventsSeparateEvents(EEG, varargin)
 %                 default: tempdir
 %
 % Outputs:
-%   EEG       - EEGLAB Structure with modified .vhtp field
+%   EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %   [table] summary_table: subject chan power_type_bandname
 %

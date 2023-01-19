@@ -11,7 +11,7 @@ function [EEGcell, results] = eeg_htpVisualizeChirpItcErsp( EEGcell, varargin )
 %   [ EEGcell, results ] = eeg_htpVisualizeChirpItcErsp( EEGcell )
 %
 %% Require Inputs:
-%   EEGcell       - cell array of EEGLAB Structures
+%   EEGCell [cell]: cell array of EEG stuct
 %
 %% Function Specific Inputs:
 %   **'outputdir' - output directory for save files**
@@ -30,7 +30,7 @@ function [EEGcell, results] = eeg_htpVisualizeChirpItcErsp( EEGcell, varargin )
 %   modified.**
 %
 %% Outputs:
-%   EEGcell       - cell array of EEGLAB Structure with modified .etc.htp field
+%   EEGcell       - cell array of EEGLAB Structure with added or modified .vhtp field
 %
 %   results   - etc.htp results structure or customized
 %

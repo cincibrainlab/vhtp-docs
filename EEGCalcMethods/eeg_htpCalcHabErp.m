@@ -33,7 +33,7 @@ function [EEG, results] = eeg_htpCalcHabErp( EEG, varargin )
 %                 default: tempdir
 %     
 %% Outputs:
-%   EEG       - EEGLAB Structure with modified .etc.htp field
+%   EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %   results   - etc.htp results structure or customized
 %

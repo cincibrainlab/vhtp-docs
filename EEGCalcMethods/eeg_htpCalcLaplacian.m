@@ -24,7 +24,7 @@ function [EEG, results] = eeg_htpCalcLaplacian(EEG, varargin)
 %   **'outdir' - directory to save the results to**
 %
 %% Outputs:
-%   EEG       - EEGLAB Structure with modified .vhtp field
+%   EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %   results   - .vhtp structure
 %
