@@ -6,45 +6,79 @@ Here you will find the available methods and their respective parameters and usa
 .. module:: EEGCalcMethods
 
 Amplitude-Amplitude Coupling
-----------------------------
-.. mat:autofunction:: eeg_htpCalcAacGlobal
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcAacGlobal
+
+    .. mat:autofunction:: eeg_htpCalcAacGlobal
 
 Auditory Chirp Analysis
------------------------
-.. mat:autofunction:: eeg_htpCalcChirpItcErsp
+^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcChirpItcErsp
+
+    .. mat:autofunction:: eeg_htpCalcChirpItcErsp
 
 Euler Phase Amplitude Coupling
-------------------------------
-.. mat:autofunction:: eeg_htpCalcEulerPac
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcEulerPac
+
+    .. mat:autofunction:: eeg_htpCalcEulerPac
 
 Auditory Habituation Analysis
------------------------------
-.. mat:autofunction:: eeg_htpCalcHabErp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcHabErp
+
+    .. mat:autofunction:: eeg_htpCalcHabErp
 
 Laplacian Spatial Filtering
----------------------------
-.. mat:autofunction:: eeg_htpCalcLaplacian
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcLaplacian
+
+    .. mat:autofunction:: eeg_htpCalcLaplacian
 
 Resting Spectral Power Analysis
--------------------------------
-.. mat:autofunction:: eeg_htpCalcRestPower
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcRestPower
+
+    .. mat:autofunction:: eeg_htpCalcRestPower
 
 Convert Data to Column Matrix
------------------------------
-.. mat:autofunction:: eeg_htpCalcReturnColumnMatrix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcReturnColumnMatrix
+
+    .. mat:autofunction:: eeg_htpCalcReturnColumnMatrix
 
 Source Localization with Brainstorm
------------------------------------
-.. mat:autofunction:: eeg_htpCalcSource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcSource
+
+    .. mat:autofunction:: eeg_htpCalcSource
 
 Spectral Event Toolbox Wrapper
-------------------------------
-.. mat:autofunction:: eeg_htpCalcSpectralEvents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcSpectralEvents
+
+    .. mat:autofunction:: eeg_htpCalcSpectralEvents
 
 Spectral Event Toolbox Wrapper - Separate Events
-------------------------------------------------
-.. mat:autofunction:: eeg_htpCalcSpectralEventsSeparateEvents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcSpectralEventsSeparateEvents
+
+    .. mat:autofunction:: eeg_htpCalcSpectralEventsSeparateEvents
 
 Spectral Event Toolbox Wrapper - Separate Trials
-------------------------------------------------
-.. mat:autofunction:: eeg_htpCalcSpectralEventsSeparateTrials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpCalcSpectralEventsSeparateTrials
+
+    .. mat:autofunction:: eeg_htpCalcSpectralEventsSeparateTrials
+
+Simulate EEG signal
+^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpEegSimulateEeg
+
+    .. mat:autofunction:: eeg_htpEegSimulateEeg
+
+QA EEG1 vs. EEG2 Comparison
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. collapse:: eeg_htpEegAssessPipelineHAPPE
+
+    .. mat:autofunction:: eeg_htpEegAssessPipelineHAPPE

@@ -22,7 +22,7 @@ function [EEG, results] = eeg_htpCalcChirpItcErsp(EEG, varargin)
 %   | **'option1' - description**
 %
 %% Outputs:
-%   EEG       - EEGLAB Structure with modified .etc.htp field
+%   EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %   results   - etc.htp results structure or customized
 %

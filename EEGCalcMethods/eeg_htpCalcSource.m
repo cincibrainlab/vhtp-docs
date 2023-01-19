@@ -51,7 +51,7 @@ function [EEG2, results] = eeg_htpCalcSource(EEG, varargin)
 %                 default: tempdir
 %
 %% Outputs:
-%   EEG       - EEGLAB Structure with modified .vhtp field
+%   EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %   results   - .vhtp structure
 %

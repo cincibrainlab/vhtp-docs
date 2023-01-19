@@ -6,7 +6,7 @@ function [EEG, results] = eeg_htpPlotSingleChannel( EEG, varargin )
 %    [ EEG, results ] = eeg_htpPlotSingleChannel( EEG, options )
 %
 %% Require Inputs:
-%     EEG       - EEGLAB Structure
+%   | EEG [struct]          - EEGLAB Structure
 %
 %% Function Specific Inputs:
 %     **'chan' - channel number**
@@ -14,7 +14,7 @@ function [EEG, results] = eeg_htpPlotSingleChannel( EEG, varargin )
 %     **'outputdir' - output directory to save files**
 %     
 %% Outputs:
-%     EEG       - EEGLAB Structure with modified .etc.htp field
+%     EEG - EEGLAB-structure with added or modified .vhtp field
 %
 %     results   - etc.htp results structure or customized
 %
