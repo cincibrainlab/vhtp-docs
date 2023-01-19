@@ -6,6 +6,8 @@ Here you will find the available methods and their respective parameters and usa
 .. module:: EEGUtilMethods
 
 Import EEG
-----------
-.. mat:autofunction:: util_htpImportEeg
+^^^^^^^^^^
+.. collapse:: util_htpImportEeg
+
+    .. mat:autofunction:: util_htpImportEeg
 
