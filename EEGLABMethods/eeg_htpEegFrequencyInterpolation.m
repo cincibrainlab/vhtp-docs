@@ -1,11 +1,11 @@
 function [EEG,results] = eeg_htpEegFrequencyInterpolation(EEG,varargin)
-%% Description: Perform Frequency Interpolation on data
+%% **Description:** Perform Frequency Interpolation on data
 %
-%% ShortTitle: Frequency Interpolation EEG 
+%% **ShortTitle:** Frequency Interpolation EEG 
 %
-%% Category: Preprocessing
+%% **Category:** Preprocessing
 %
-%% Tags: Filter
+%% **Tags:** Filter
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_htpEegFrequencyInterpolation( EEG, varargin)

@@ -1,11 +1,11 @@
 function [EEG, results] = eeg_htpEegResampleDataEeglab(EEG,varargin)
-%% Description: Resamples data to newly specified sampling rate
+%% **Description:** Resamples data to newly specified sampling rate
 %
-%% ShortTitle: Resample EEG data
+%% **ShortTitle:** Resample EEG data
 %
-%% Category: Preprocessing
+%% **Category:** Preprocessing
 %
-%% Tags: Resample
+%% **Tags:** Resample
 %
 %% Syntax:
 %   [ EEG, results ] = eeg_ResampleDataEeglab( EEG, srate )

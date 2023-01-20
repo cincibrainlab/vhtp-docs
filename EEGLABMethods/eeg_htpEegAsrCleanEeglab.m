@@ -1,11 +1,11 @@
 function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
-%% Description: Perform ASR cleaning via the clean_rawdata plugin provided through the EEGLAB interface
+%% **Description:** Perform ASR cleaning via the clean_rawdata plugin provided through the EEGLAB interface
 %
-%% Short Title: Artifact Subspace Reconstruction
+%% **Short Title:** Artifact Subspace Reconstruction
 %
-%% Category: preprocessing
+%% **Category:** Preprocessing
 %
-%% Tags: Artifact
+%% **Tags:** Artifact
 %
 %% Syntax:
 %    [ EEG, results ] = eeg_htpEegAsrCleanEeglab( EEG, varargin )
@@ -17,22 +17,19 @@ function [EEG,results] = eeg_htpEegAsrCleanEeglab(EEG,varargin)
 %   'asrmode'   - Integer indicating type of ASR cleaning performed
 %                 Modes:
 %                   1: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection
-%                   
 %                       Mode 1 will negate 'asrburst' and 'asrwindow' parameters
 %
 %                   2: ASR burst reparation, window rejection
-%
 %                       Mode 2 will negate 'asrflatline', 'asrhighpass', 'asrchannel', and 'asrnoisy' parameters
 %
-%                   3: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection, ASR burst reparation, window rejection
+%                   **3: flatline channel rejection, IIR highpass filter, correlation with reconstructed channel rejection, line-noise channel rejection, ASR burst reparation, window rejection**
 %
 %                   4: ASR burst reparation, window rejection
-%
 %                       Mode 4 will negate 'asrflatline', 'asrhighpass', 'asrchannel', and 'asrnoisy' parameters
 %
-%                   5: Custom
+%                   **5: Custom**
 %                 
-%                 default: 2
+%                   default: 2
 %                 
 %
 %   'asrflatline'   - Integer representing the seconds of the max flatline duration. 
